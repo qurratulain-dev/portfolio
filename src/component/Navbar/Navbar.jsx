@@ -14,6 +14,13 @@ const Navbar = () => {
         setIsMenu(!isMenu);
     };
 
+    const handleClick = (e, sectionId) => {
+        e.preventDefault();
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+        setActiveSection(sectionId);
+        setIsMenu(false);
+    };
+
     // ✅ Scroll background effect
     useEffect(() => {
         const handleScroll = () => {

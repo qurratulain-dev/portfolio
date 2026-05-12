@@ -1,26 +1,56 @@
-import React from 'react'
-import FrontEnd from './FronEnd'
-import BackEnd from './BackEnd'
+import React from "react";
+import { FaHtml5, FaCss3Alt, FaBootstrap, FaReact, FaJs } from "react-icons/fa";
+import { SiLaravel, SiMysql, SiPhp, SiTailwindcss } from "react-icons/si";
+import SkillsSection from "./SkillsSection";
+
+const frontEndLeftSkills = [
+  { name: "HTML", level: 90, icon: <FaHtml5 color="#E44D26" size={24} /> },
+  { name: "CSS", level: 80, icon: <FaCss3Alt color="#1572B6" size={24} /> },
+  { name: "JavaScript", level: 70, icon: <FaJs color="#F7DF1E" size={24} /> },
+];
+
+const frontEndRightSkills = [
+  { name: "React", level: 55, icon: <FaReact color="#61DBFB" size={24} /> },
+  { name: "Tailwind CSS", level: 70, icon: <SiTailwindcss color="#38BDF8" size={24} /> },
+  { name: "Bootstrap", level: 80, icon: <FaBootstrap color="#7952B3" size={24} /> },
+];
+
+const backEndLeftSkills = [
+  { name: "MySQL", level: 55, icon: <SiMysql className="text-[#00758F]" size={24} /> },
+  { name: "Laravel", level: 50, icon: <SiLaravel className="text-[#FF2D20]" size={24} /> },
+];
+
+const backEndRightSkills = [
+  { name: "PHP", level: 60, icon: <SiPhp className="text-[#777BB4]" size={24} /> },
+];
 
 const Skills = () => {
   return (
-    <section id='skills'>
-      <div  className="max-w-6xl mx-auto px-10 py-16">
+    <section id="skills">
+      <div className="max-w-6xl mx-auto px-10 py-16">
         <h2 className="text-4xl font-bold text-emerald-500 text-center">
-           Skills
+          Skills
         </h2>
 
         <p className="capitalize text-center my-3 text-gray-500">
           Here's an overview of my technical expertise and proficiency level
         </p>
 
-        <div >
-          <FrontEnd />
-          <BackEnd />
+        <div>
+          <SkillsSection
+            title="Front End"
+            leftSkills={frontEndLeftSkills}
+            rightSkills={frontEndRightSkills}
+          />
+          <SkillsSection
+            title="Back End"
+            leftSkills={backEndLeftSkills}
+            rightSkills={backEndRightSkills}
+          />
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;

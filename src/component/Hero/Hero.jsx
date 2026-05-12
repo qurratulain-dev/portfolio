@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { TypeAnimation } from "react-type-animation";
 import NavLinks from "../Navbar/NavLinks";
 import HeroButton from "./HeroButton";
@@ -16,17 +16,26 @@ const Hero = () => {
 
           {/* Typewriter Roles */}
           <TypeAnimation
-            sequence={["Web Designer", 2000, "Web Developer", 2000, "UI/UX Designer", 2000]}
+            sequence={[
+              "Junior Full-Stack Developer",
+              2000,
+              "React  Developer",
+              2000,
+              "Laravel  Developer",
+              2000,
+              "Web Developer",
+              2000,
+            ]}
             wrapper="h2"
             cursor={true}
             repeat={Infinity}
-            className="text-3xl md:text-4xl font-semibold text-emerald-500 hero-typewriter"
+            className="text-2xl md:text-4xl font-semibold text-emerald-500 hero-typewriter"
           />
 
           {/* Paragraph */}
           <p className="text-gray-300 max-w-xl">
-            As a Front-End Developer, I specialize in creating responsive, user-friendly, and visually appealing web interfaces
-            using HTML, CSS, JavaScript, and modern frameworks.
+           Junior Full-Stack Developer skilled in building responsive, user-friendly web applications using React, Laravel, PHP, and MySQL. Passionate about creating modern interfaces, 
+           developing backend functionality, and contributing to real-world projects.
           </p>
 
           {/* Buttons */}

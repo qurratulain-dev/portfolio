@@ -2,13 +2,20 @@ import React, { useEffect, useRef, useState } from "react";
 
 const SkillsSection = ({ title, leftSkills, rightSkills }) => {
   const sectionRef = useRef(null);
+  const hasAnimatedRef = useRef(false);
   const [visible, setVisible] = useState(false);
   const [progressLeft, setProgressLeft] = useState(leftSkills.map(() => 30));
   const [progressRight, setProgressRight] = useState(rightSkills.map(() => 30));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimatedRef.current) {
+          hasAnimatedRef.current = true;
+          setVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
       { threshold: 0.3 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
@@ -18,6 +25,7 @@ const SkillsSection = ({ title, leftSkills, rightSkills }) => {
   useEffect(() => {
     if (!visible) return;
     let start = null;
+    let animationFrameId = null;
     const duration = 2000;
 
     const animate = (timestamp) => {
@@ -32,11 +40,15 @@ const SkillsSection = ({ title, leftSkills, rightSkills }) => {
         rightSkills.map((skill) => Math.floor(30 + (skill.level - 30) * eased))
       );
 
-      if (eased < 1) requestAnimationFrame(animate);
+      if (eased < 1) animationFrameId = requestAnimationFrame(animate);
     };
 
-    requestAnimationFrame(animate);
-  }, [visible]);
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+  }, [visible, leftSkills, rightSkills]);
 
   const renderSkills = (skills, progressArray) => (
     <div className="w-full md:w-1/2 space-y-10">
