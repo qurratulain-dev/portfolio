@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { TbMenu2, TbMenu3 } from "react-icons/tb";
 import { gsap } from "gsap";
 import MobileMenu from "./MobileMenu";
-import NavLinks from "./NavLinks";
 
 const Navbar = () => {
     const [isMenu, setIsMenu] = useState(false);
@@ -60,20 +59,20 @@ const Navbar = () => {
     return (
         <header
             ref={navRef}
-            className={`fixed top-0 left-0 w-full z-9999 transition-all duration-500 ${scrolled ? "bg-[#1f242d]" : "bg-[#1f242d]/90"
+            className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-500 ${scrolled ? "bg-[#1f242d]" : "bg-[#1f242d]/90"
                 } backdrop-blur-lg shadow-md`}
         >
-            <nav className="max-w-6xl mx-auto px-10 flex justify-between items-center md:h-[13vh] h-[12vh]">
+            <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-16 sm:h-18 lg:h-20">
                 <a
                     href="#home"
-                    className="animate-item text-2xl md:text-4xl font-bold bg-linear-to-r from-emerald-400 via-lime-400 to-teal-400 bg-clip-text text-transparent relative group"
+                    className="animate-item shrink-0 text-2xl sm:text-3xl lg:text-4xl font-bold bg-linear-to-r from-emerald-400 via-lime-400 to-teal-400 bg-clip-text text-transparent relative group"
                 >
                     PORTFOLIO
                     <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-linear-to-r from-emerald-400 to-teal-400 rounded-full transition-all duration-500 group-hover:w-full"></span>
                 </a>
 
                 {/* Nav Links */}
-                <ul className="md:flex hidden justify-between items-center space-x-6">
+                <ul className="md:flex hidden items-center gap-2 lg:gap-6 ml-auto">
                     {navLinks.map((item) => (
                         <li key={item.id} className="animate-item">
                             <a
@@ -92,11 +91,8 @@ const Navbar = () => {
                     ))}
                 </ul>
 
-                {/* Right Side Icons */}
-                <div className="flex items-center gap-5">
-                    <NavLinks />
-
-                    {/*  Hamburger Menu */}
+                {/* Mobile menu button */}
+                <div className="ml-auto md:ml-4 flex items-center gap-3 sm:gap-5">
                     <a
                         href="#"
                         className="text-gray-100 text-3xl md:hidden animate-item"
@@ -120,7 +116,8 @@ const navLinks = [
     { id: 1, Element: "Home", link: "home" },
     { id: 2, Element: "About", link: "about" },
     { id: 3, Element: "Skills", link: "skills" },
-    { id: 4, Element: "Contact", link: "contact" },
+    { id: 4, Element: "Projects", link: "projects" },
+    { id: 5, Element: "Contact", link: "contact" },
 ];
 
 export default Navbar;

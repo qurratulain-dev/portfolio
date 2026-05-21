@@ -41,20 +41,20 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20">
-      <div className="max-w-6xl mx-auto px-6 md:px-10 grid md:grid-cols-2 gap-10 items-start">
+    <section id="contact" className="scroll-mt-20 py-10 sm:py-12 lg:py-14">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
         {/* 🔹 Left Side */}
         <ContactLeft />
 
         {/* 🔹 Contact Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-900 p-6 rounded-2xl shadow-lg space-y-5"
+          className="bg-gray-900 p-4 sm:p-6 rounded-lg shadow-lg space-y-5 w-full"
         >
           <h3 className="text-2xl font-bold text-emerald-500 mb-2">Get In Touch</h3>
 
           {/* Render Inputs */}
-          <div className="grid md:grid-cols-2 gap-3">
+          <div className="grid sm:grid-cols-2 gap-3">
             {inputFields.slice(0, 2).map((field, index) => (
               <input
                 key={index}
@@ -69,7 +69,7 @@ const Contact = () => {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-2 gap-3">
+          <div className="grid sm:grid-cols-2 gap-3">
             {inputFields.slice(2, 4).map((field, index) => (
               <input
                 key={index}

@@ -20,7 +20,7 @@ const HeroButton = () => {
   ];
 
   return (
-    <div className="flex flex-wrap gap-4 mt-8 justify-center">
+    <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-8 justify-center">
       {buttons.map((btn) => (
         <ButtonItem key={btn.id} icon={btn.icon} text={btn.text} href={btn.href} />
       ))}

@@ -26,13 +26,13 @@ const backEndRightSkills = [
 
 const Skills = () => {
   return (
-    <section id="skills">
-      <div className="max-w-6xl mx-auto px-10 py-16">
-        <h2 className="text-4xl font-bold text-emerald-500 text-center">
+    <section id="skills" className="scroll-mt-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-14">
+        <h2 className="text-3xl sm:text-4xl font-bold text-emerald-500 text-center">
           Skills
         </h2>
 
-        <p className="capitalize text-center my-3 text-gray-500">
+        <p className="capitalize text-center my-3 text-gray-500 max-w-2xl mx-auto">
           Here's an overview of my technical expertise and proficiency level
         </p>
 

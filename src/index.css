@@ -1,7 +1,18 @@
 @import "tailwindcss";
-body{
-  background-color: #1f242d;
+
+* {
+  box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: #1f242d;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
 }

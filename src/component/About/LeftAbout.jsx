@@ -9,25 +9,25 @@ const LeftAbout = () => {
         aboutGsapAnimation(aboutRef);
     }, []);
   return (
-    <div ref={aboutRef} className="flex flex-col gap-6 basis-[45%]">
+    <div ref={aboutRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-5 sm:gap-6 basis-full md:basis-[42%] w-full">
                     {/* Experience Box */}
-                    <div  className="group border  border-emerald-600/40 bg-gray-900/40 
-                  rounded-xl text-center px-16 py-9 transition-all duration-300 ease-in-out 
+                    <div  className="group border border-emerald-600/40 bg-gray-900/40 
+                  rounded-lg text-center px-6 sm:px-8 py-8 transition-all duration-300 ease-in-out 
                   hover:bg-emerald-500/5 hover:border-emerald-500 
-                  aspect-square w-[320px] mx-auto flex flex-col justify-center items-center">
-                        <h3 className="font-bold text-emerald-400 counter text-8xl" data-target="8">
+                  aspect-square w-full max-w-[320px] mx-auto flex flex-col justify-center items-center">
+                        <h3 className="font-bold text-emerald-400 counter text-6xl sm:text-7xl lg:text-8xl" data-target="8">
                             0
                         </h3>
-                        <p className="text-white text-4xl font-semibold mt-5">
+                        <p className="text-white text-2xl sm:text-3xl lg:text-4xl font-semibold mt-5">
                             Months of Experience
                         </p>
                     </div>
 
                     {/* Projects Box */}
                     <div className="group border border-emerald-600/40 bg-gray-900/40 
-                  rounded-xl text-center p-4 transition-all duration-300 ease-in-out 
+                  rounded-lg text-center p-4 transition-all duration-300 ease-in-out 
                   hover:bg-emerald-500/5 hover:border-emerald-500 
-                   aspect-square w-[320px] h-30 mx-auto flex flex-col justify-center items-center ">
+                   aspect-square w-full max-w-[320px] mx-auto flex flex-col justify-center items-center">
                         <h3 className="text-4xl font-bold text-emerald-400 counter" data-target="15">
                             0
                         </h3>

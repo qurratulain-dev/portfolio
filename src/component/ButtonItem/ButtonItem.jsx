@@ -4,8 +4,8 @@ const ButtonItem = ({ icon, text, href }) => {
   return (
     <a
       href={href}
-      className="relative overflow-hidden border-2 border-emerald-500 text-white px-6 py-3 rounded-lg 
-       font-medium flex items-center gap-2 transition-all duration-500 group"
+      className="relative overflow-hidden border-2 border-emerald-500 text-white px-5 sm:px-6 py-3 rounded-lg 
+       font-medium inline-flex items-center justify-center gap-2 transition-all duration-500 group"
     >
       <span className="w-5 h-5 relative z-10">{icon}</span>
       <span className="relative z-10">{text}</span>

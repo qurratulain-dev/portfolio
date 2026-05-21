@@ -3,8 +3,8 @@ import { FiGithub, FiLinkedin, FiInstagram, FiMail } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <footer className=" text-gray-500 pt-16 pb-8 border-t border-gray-800">
-      <div className="max-w-6xl mx-auto px-6 md:px-10 grid md:grid-cols-3  gap-10">
+    <footer className=" text-gray-500 pt-12 sm:pt-16 pb-8 border-t border-gray-800">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
         <div>
           <h3 className="text-white text-3xl font-bold mb-3">
             Quratulain
@@ -17,7 +17,7 @@ const Footer = () => {
         </div>
 
         {/* 2️⃣ Quick Links Section */}
-        <div className="md:ml-10">
+        <div className="lg:ml-10">
           <h4 className="text-white font-semibold text-lg mb-4">
             Quick Links
           </h4>
@@ -54,7 +54,7 @@ const Footer = () => {
           <div className="space-y-3 text-sm">
             <div className="flex items-center gap-3">
               <FiMail className="text-emerald-500 text-lg" />
-              <p className="hover:text-gray-400">dev.quratulain@gmail.com</p>
+              <p className="hover:text-gray-400 break-all">dev.quratulain@gmail.com</p>
             </div>
             <div className="flex items-center gap-3">
               <FiLinkedin className="text-emerald-500 text-lg" />

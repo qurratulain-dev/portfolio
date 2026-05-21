@@ -51,7 +51,7 @@ const SkillsSection = ({ title, leftSkills, rightSkills }) => {
   }, [visible, leftSkills, rightSkills]);
 
   const renderSkills = (skills, progressArray) => (
-    <div className="w-full md:w-1/2 space-y-10">
+    <div className="w-full md:w-1/2 space-y-8 sm:space-y-10">
       {skills.map((skill, index) => (
         <div key={index} className="relative">
           <div className="flex items-center gap-2 mb-3">
@@ -81,9 +81,9 @@ const SkillsSection = ({ title, leftSkills, rightSkills }) => {
   );
 
   return (
-    <div ref={sectionRef} className="text-white flex-1 mt-20">
-      <h2 className="text-2xl font-bold text-white my-8">{title}</h2>
-      <div className="flex flex-col md:flex-row justify-between gap-16">
+    <div ref={sectionRef} className="text-white flex-1 mt-10 sm:mt-12">
+      <h2 className="text-2xl font-bold text-white my-5 sm:my-6">{title}</h2>
+      <div className="flex flex-col md:flex-row justify-between gap-10 lg:gap-16">
         {renderSkills(leftSkills, progressLeft)}
         {renderSkills(rightSkills, progressRight)}
       </div>
