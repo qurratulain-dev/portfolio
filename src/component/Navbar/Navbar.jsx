@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { TbMenu2, TbMenu3 } from "react-icons/tb";
 import { gsap } from "gsap";
 import MobileMenu from "./MobileMenu";
+import logo from "../../assets/logo-navbar.png";
 
 const Navbar = () => {
     const [isMenu, setIsMenu] = useState(false);
@@ -65,9 +66,14 @@ const Navbar = () => {
             <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-16 sm:h-18 lg:h-20">
                 <a
                     href="#home"
-                    className="animate-item shrink-0 text-2xl sm:text-3xl lg:text-4xl font-bold bg-linear-to-r from-emerald-400 via-lime-400 to-teal-400 bg-clip-text text-transparent relative group"
+                    className="animate-item shrink-0 relative group"
+                    aria-label="Go to home"
                 >
-                    PORTFOLIO
+                    <img
+                        src={logo}
+                        alt="Qurat portfolio logo"
+                        className="h-8 sm:h-10 lg:h-12 w-auto object-contain"
+                    />
                     <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-linear-to-r from-emerald-400 to-teal-400 rounded-full transition-all duration-500 group-hover:w-full"></span>
                 </a>
 
