@@ -1,9 +1,12 @@
 import React from "react";
 
-const ButtonItem = ({ icon, text, href }) => {
+const AnimatedLinkButton = ({ icon, text, href }) => {
+  const isExternal = href && (href.startsWith("http") || href.startsWith("//"));
   return (
     <a
       href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       className="relative overflow-hidden border-2 border-emerald-500 text-white px-5 sm:px-6 py-3 rounded-lg 
        font-medium inline-flex items-center justify-center gap-2 transition-all duration-500 group"
     >
@@ -19,4 +22,4 @@ const ButtonItem = ({ icon, text, href }) => {
   );
 };
 
-export default ButtonItem;
+export default AnimatedLinkButton;

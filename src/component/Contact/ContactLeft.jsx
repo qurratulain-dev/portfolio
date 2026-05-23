@@ -5,21 +5,32 @@ import { HiOutlineMail } from "react-icons/hi";
 const ContactLeft = () => {
   return (
     <div className="w-full">
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
+      <h2 className="text-2xl sm:text-2xl lg:text-[45px] font-extrabold text-white mb-6 leading-tight">
                         <span className="text-emerald-500">Let’s Build</span>    <br />  Something Extraordinary <br />Together
                     </h2>
-                    <p className="text-gray-500 mb-8 leading-relaxed max-w-[520px]">
+                    <p className="text-[#b8b8b8] mb-8 leading-relaxed max-w-[520px]">
                         Have an idea, collaboration, or project in mind? I’d love to hear
                         from you. Fill out the form and let’s start turning your vision into
                         reality.
                     </p>
                     <div className="flex items-start gap-3 mt-4">
-                        <div className="border border-emerald-500/20 p-3 rounded-full">
-                            <HiOutlineMail className="text-emerald-500 text-xl" />
-                        </div>
+                        <a
+                            href="mailto:dev.quratulain@gmail.com"
+                            aria-label="Send email"
+                            className="relative overflow-hidden border-2 border-emerald-500 text-white w-11 h-11 rounded-lg 
+                                       inline-flex shrink-0 items-center justify-center text-xl transition-all duration-500 group"
+                        >
+                            <span className="relative z-10">
+                                <HiOutlineMail />
+                            </span>
+                            <span
+                                className="absolute top-0 left-0 w-full h-full bg-emerald-500 origin-bottom-left 
+                                           -rotate-90 group-hover:rotate-0 transition-transform duration-500 ease-in-out z-0"
+                            ></span>
+                        </a>
                         <div>
-                            <p className="text-gray-500 text-sm tracking-wide">E-mail:</p>
-                            <p className="text-gray-200 font-medium break-all">dev.quratulain@gmail.com</p>
+                            <p className="text-[#b8b8b8] text-sm tracking-wide">E-mail:</p>
+                            <p className="text-[#b8b8b8] font-medium break-all">dev.quratulain@gmail.com</p>
                         </div>
                     </div>
     </div>

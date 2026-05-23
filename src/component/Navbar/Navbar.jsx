@@ -21,7 +21,7 @@ const Navbar = () => {
         setIsMenu(false);
     };
 
-    // ✅ Scroll background effect
+    //  Scroll background effect
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
@@ -60,10 +60,10 @@ const Navbar = () => {
     return (
         <header
             ref={navRef}
-            className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-500 ${scrolled ? "bg-[#1f242d]" : "bg-[#1f242d]/90"
+            className={`fixed top-0 left-0 w-full z-9999 transition-all duration-500 ${scrolled ? "bg-[#1f242d]" : "bg-[#1f242d]/90"
                 } backdrop-blur-lg shadow-md`}
         >
-            <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-16 sm:h-18 lg:h-20">
+            <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-16 sm:h-18 lg:h-20">
                 <a
                     href="#home"
                     className="animate-item shrink-0 relative group"
@@ -127,3 +127,4 @@ const navLinks = [
 ];
 
 export default Navbar;
+

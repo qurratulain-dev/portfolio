@@ -1,12 +1,12 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
-import NavLinks from "../Navbar/NavLinks";
-import HeroButton from "./HeroButton";
+import SocialLinks from "./SocialLinks";
+import HeroActions from "./HeroActions";
 const Hero = () => {
 
   return (
     <section id="home" className="scroll-mt-20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10 sm:pt-28 sm:pb-12 lg:pt-30 xl:pt-28 xl:pb-14 flex items-center justify-center gap-8 flex-col-reverse md:flex-row">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10 sm:pt-28 sm:pb-12 lg:pt-30 xl:pt-28 xl:pb-14 flex items-center justify-center gap-8 flex-col-reverse md:flex-row">
         <div className="w-full max-w-3xl mx-auto space-y-5 text-center">
           {/* Intro */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
@@ -21,6 +21,8 @@ const Hero = () => {
               2000,
               "Laravel  Developer",
               2000,
+              "Backend  Developer",
+              2000,
               "React  Developer",
               2000,
               "Web Application Developer",
@@ -33,19 +35,19 @@ const Hero = () => {
           />
 
           {/* Paragraph */}
-          <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">
-           Junior Full-Stack Developer skilled in building responsive, user-friendly web applications using React, Laravel, PHP, and MySQL. Passionate about creating modern interfaces, 
-           developing backend functionality, and contributing to real-world projects.
-          </p>
+          <p className="text-[#b8b8b8] max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">
+          Full-Stack Developer skilled in building responsive and user-friendly web applications using React, Laravel, PHP, MySQL, and REST APIs.
+          Passionate about creating modern interfaces, developing secure backend functionality, and contributing to real-world projects.
+           </p>
 
           {/* Buttons */}
-            <HeroButton />
+            <HeroActions />
 
 
           {/* Social */}
           <div className="flex w-fit flex-col items-start mt-8">
-            <p className="font-light text-white text-lg sm:text-xl mb-3">Find me on</p>
-            <NavLinks />
+            <p className="font-light text-[#b8b8b8] text-lg sm:text-xl mb-3">Find me on</p>
+            <SocialLinks />
           </div>
         </div>
       </div>
@@ -54,3 +56,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

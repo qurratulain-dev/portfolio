@@ -1,7 +1,7 @@
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-const NavLinks = () => {
+const SocialLinks = () => {
   const socialLinks = [
     {
       id: 1,
@@ -23,15 +23,18 @@ const NavLinks = () => {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="animate-item w-10 h-10 text-gray-100 inline-flex items-center justify-center 
-                     bg-white/10 rounded-full text-xl z-1 transition-all duration-400 
-                     hover:text-emerald-400 hover:scale-110 hover:shadow-[0_0_15px_#10b981]"
+          className="animate-item relative overflow-hidden w-10 h-10 border-2 border-emerald-500 text-white 
+                     inline-flex items-center justify-center rounded-lg text-xl transition-all duration-500 group"
         >
-          {icon}
+          <span className="relative z-10">{icon}</span>
+          <span
+            className="absolute top-0 left-0 w-full h-full bg-emerald-500 origin-bottom-left 
+                       -rotate-90 group-hover:rotate-0 transition-transform duration-500 ease-in-out z-0"
+          ></span>
         </a>
       ))}
     </div>
   );
 };
 
-export default NavLinks;
+export default SocialLinks;
