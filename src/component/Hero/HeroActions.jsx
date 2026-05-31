@@ -8,7 +8,7 @@ const HeroActions = () => {
       id: 1,
       icon: <FiDownload />,
       text: "Download Resume",
-      href:"https://drive.google.com/file/d/1xr9sY_p97SdSGcsC60qeqmFwOkvc6tv4/view?usp=sharing",
+      href:"https://drive.google.com/file/d/1vZNZJrytqlKDjruyLXL8U1hhQh1urZA9/view?usp=sharing",
     },
     {
       id: 2,
