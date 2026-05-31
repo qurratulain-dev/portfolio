@@ -52,7 +52,10 @@ const RightAbout = () => {
       title: "Laravel Developer",
       content: (
         <ul className="text-[#b8b8b8] space-y-2 text-sm">
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
         </ul>
       ),
     },
