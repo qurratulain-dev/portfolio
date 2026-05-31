@@ -5,5 +5,5 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
   ],
-  base: '/Qurat_Portfolio/'
+  base: '/'
 })
