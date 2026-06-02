@@ -6,6 +6,7 @@ import Skills from './component/Skills/Skills'
 import Projects from './component/Projects/Projects'
 import Contact from './component/Contact/Contact'
 import Footer from './component/Footer/Footer'
+import ScrollToTop from './component/ScrollToTop/ScrollToTop'
 
 
 
@@ -19,6 +20,7 @@ const App = () => {
     <Projects />
     <Contact />
     <Footer />
+    <ScrollToTop />
     </>
   )
 }
