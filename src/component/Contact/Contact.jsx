@@ -70,7 +70,7 @@ const Contact = () => {
   );
 
   return (
-    <section id="contact" className="scroll-mt-20 py-10 sm:py-12 lg:py-14">
+    <section id="contact" className="section-surface-primary section-divider-soft scroll-mt-20 py-10 sm:py-12 lg:py-14">
       {submitted && (
         <div
           key={toastId}
@@ -109,7 +109,7 @@ const Contact = () => {
 
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-900 p-4 sm:p-6 rounded-lg shadow-lg space-y-5 w-full"
+          className="bg-[#111827]/85 border border-white/5 p-4 sm:p-6 rounded-lg shadow-lg shadow-black/20 space-y-5 w-full"
         >
           <h3 className="text-2xl font-bold text-emerald-500 mb-2">Get In Touch</h3>
 

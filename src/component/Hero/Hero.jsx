@@ -5,7 +5,7 @@ import HeroActions from "./HeroActions";
 const Hero = () => {
 
   return (
-    <section id="home" className="scroll-mt-20">
+    <section id="home" className="section-surface-primary scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10 sm:pt-28 sm:pb-12 lg:pt-30 xl:pt-28 xl:pb-14 flex items-center justify-center gap-8 flex-col-reverse md:flex-row">
         <div className="w-full max-w-3xl mx-auto space-y-5 text-center">
           {/* Intro */}
@@ -51,6 +51,20 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Scroll down arrow */}
+      <a href="#about" className="flex justify-center mt-4 pb-6">
+        <span className="text-emerald-500 text-2xl cursor-pointer" style={{ animation: "bounceY 1.5s ease-in-out infinite" }}>
+          &#10095;
+        </span>
+      </a>
+
+      <style>{`
+        @keyframes bounceY {
+          0%, 100% { transform: translateY(0) rotate(90deg); }
+          50% { transform: translateY(10px) rotate(90deg); }
+        }
+      `}</style>
     </section>
   );
 };

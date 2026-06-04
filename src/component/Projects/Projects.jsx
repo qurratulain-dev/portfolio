@@ -21,7 +21,7 @@ const upcomingHighlights = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="scroll-mt-20 py-10 sm:py-12 lg:py-14">
+    <section id="projects" className="section-surface-secondary section-divider-soft scroll-mt-20 py-10 sm:py-12 lg:py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-emerald-500 text-center">
           Projects
@@ -36,7 +36,7 @@ const Projects = () => {
           {upcomingHighlights.map((item) => (
             <article
               key={item.title}
-              className="rounded-lg border border-emerald-500/20 bg-gray-900 p-5 shadow-lg shadow-black/10 transition duration-300 hover:-translate-y-1 hover:border-emerald-500/50"
+              className="rounded-lg border border-emerald-500/20 bg-[#111827]/85 p-5 shadow-lg shadow-black/10 transition duration-300 hover:-translate-y-1 hover:border-emerald-500/50 hover:bg-[#111827]"
             >
               <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-emerald-500/10 text-2xl text-emerald-400">
                 {item.icon}

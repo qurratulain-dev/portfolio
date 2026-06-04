@@ -9,12 +9,25 @@ html {
 }
 
 body {
-  background-color: #1f242d;
+  background-color: #151b23;
+  color: #ffffff;
   overflow-x: hidden;
 }
 
 #root {
   min-height: 100vh;
+}
+
+.section-surface-primary {
+  background-color: #1f242d;
+}
+
+.section-surface-secondary {
+  background-color: #151b23;
+}
+
+.section-divider-soft {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .toast-enter {

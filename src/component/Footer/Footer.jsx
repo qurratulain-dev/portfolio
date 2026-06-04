@@ -22,7 +22,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="text-[#888888] pt-12 sm:pt-16 pb-8 border-t border-gray-800">
+    <footer className="section-surface-secondary text-[#888888] pt-12 sm:pt-16 pb-8 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_1fr] gap-10 lg:gap-12">
         <div>
           <a href="#home" aria-label="Go to home" className="inline-block mb-3">

@@ -11,7 +11,7 @@ const LeftAbout = () => {
   return (
     <div ref={aboutRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-5 sm:gap-6 basis-full md:basis-[38%] w-full">
                     {/* Experience Box */}
-                    <div  className="group border border-emerald-600/40 bg-gray-900/40 
+                    <div  className="group border border-emerald-600/40 bg-[#111827]/70 shadow-lg shadow-black/10 
                   rounded-lg text-center px-6 sm:px-8 py-8 transition-all duration-300 ease-in-out 
                   hover:bg-emerald-500/5 hover:border-emerald-500 
                   aspect-square w-full max-w-[360px] mx-auto flex flex-col justify-center items-center">
@@ -24,7 +24,7 @@ const LeftAbout = () => {
                     </div>
 
                     {/* Projects Box */}
-                    <div className="group border border-emerald-600/40 bg-gray-900/40 
+                    <div className="group border border-emerald-600/40 bg-[#111827]/70 shadow-lg shadow-black/10 
                   rounded-lg text-center p-4 transition-all duration-300 ease-in-out 
                   hover:bg-emerald-500/5 hover:border-emerald-500 
                    aspect-square w-full max-w-[360px] mx-auto flex flex-col justify-center items-center">

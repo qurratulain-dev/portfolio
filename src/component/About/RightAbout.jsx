@@ -71,7 +71,7 @@ const RightAbout = () => {
   ];
 
   const cardStyle =
-    "font-semibold tracking-wider text-gray-100 px-4 py-5 rounded-2xl relative transition-all duration-300 ease-in-out bg-gray-900 border border-emerald-600/30 hover:bg-emerald-500/10 hover:text-emerald-400";
+    "font-semibold tracking-wider text-gray-100 px-4 py-5 rounded-lg relative transition-all duration-300 ease-in-out bg-[#111827]/85 border border-emerald-600/30 shadow-lg shadow-black/10 hover:bg-emerald-500/10 hover:text-emerald-400";
 
   return (
     <div className="basis-full md:basis-[62%] w-full">

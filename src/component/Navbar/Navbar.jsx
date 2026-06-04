@@ -66,7 +66,7 @@ const Navbar = () => {
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-16 sm:h-18 lg:h-20">
                 <a
                     href="#home"
-                    className="animate-item shrink-0 relative group"
+                    className="animate-item shrink-0"
                     aria-label="Go to home"
                 >
                     <img
@@ -74,7 +74,6 @@ const Navbar = () => {
                         alt="Qurat portfolio logo"
                         className="h-8 sm:h-10 lg:h-12 w-auto object-contain"
                     />
-                    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-linear-to-r from-emerald-400 to-teal-400 rounded-full transition-all duration-500 group-hover:w-full"></span>
                 </a>
 
                 {/* Nav Links */}
