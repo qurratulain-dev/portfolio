@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
+import { FiMoon, FiSun } from "react-icons/fi";
 import { TbMenu2, TbMenu3 } from "react-icons/tb";
 import { gsap } from "gsap";
 import MobileMenu from "./MobileMenu";
 import logo from "../../assets/logo-navbar.png";
 
-const Navbar = () => {
+const Navbar = ({ isDarkMode, onToggleTheme }) => {
     const [isMenu, setIsMenu] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
@@ -60,7 +61,7 @@ const Navbar = () => {
     return (
         <header
             ref={navRef}
-            className={`fixed top-0 left-0 w-full z-9999 transition-all duration-500 ${scrolled ? "bg-[#1f242d]" : "bg-[#1f242d]/90"
+            className={`site-navbar fixed top-0 left-0 w-full z-9999 transition-all duration-500 ${scrolled ? "bg-[#1f242d]" : "bg-[#1f242d]/90"
                 } backdrop-blur-lg shadow-md`}
         >
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-16 sm:h-18 lg:h-20">
@@ -76,38 +77,54 @@ const Navbar = () => {
                     />
                 </a>
 
-                {/* Nav Links */}
-                <ul className="md:flex hidden items-center gap-2 lg:gap-6 ml-auto">
-                    {navLinks.map((item) => (
-                        <li key={item.id} className="animate-item">
-                            <a
-                                href={`#${item.link}`}
-                                onClick={(e) => handleClick(e, item.link)}
-                                className={`font-semibold tracking-wider text-gray-100 px-3 py-1.5 rounded-md relative inline-block 
+                {/* Right side group */}
+                <div className="flex items-center gap-4 ml-auto">
+                    {/* Nav Links */}
+                    <ul className="md:flex hidden items-center gap-2 lg:gap-6">
+                        {navLinks.map((item) => (
+                            <li key={item.id} className="animate-item">
+                                <a
+                                    href={`#${item.link}`}
+                                    onClick={(e) => handleClick(e, item.link)}
+                                    className={`font-semibold tracking-wider text-gray-100 px-3 py-1.5 rounded-md relative inline-block 
                                 transition-all duration-300 ease-in-out 
                                 ${activeSection === item.link
-                                        ? "bg-emerald-500/10 text-emerald-400"
-                                        : "hover:bg-emerald-500/10 hover:text-emerald-400"
-                                    }`}
-                            >
-                                {item.Element}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                                            ? "bg-emerald-500/10 text-emerald-400"
+                                            : "hover:bg-emerald-500/10 hover:text-emerald-400"
+                                        }`}
+                                >
+                                    {item.Element}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
 
-                {/* Mobile menu button */}
-                <div className="ml-auto md:ml-4 flex items-center gap-3 sm:gap-5">
-                    <a
-                        href="#"
-                        className="text-gray-100 text-3xl md:hidden animate-item"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            menuToggle();
-                        }}
-                    >
-                        {isMenu ? <TbMenu3 /> : <TbMenu2 />}
-                    </a>
+                    {/* Vertical divider */}
+                    <div className="hidden md:block w-px h-6 bg-gray-500/40"></div>
+
+                    {/* Mobile menu button */}
+                    <div className="flex items-center gap-3 sm:gap-5">
+                        <button
+                            type="button"
+                            onClick={onToggleTheme}
+                            aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                            aria-pressed={!isDarkMode}
+                            className="theme-toggle animate-item inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-emerald-500/40 text-gray-100 transition-all duration-300 hover:border-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-400"
+                        >
+                            {isDarkMode ? <FiSun /> : <FiMoon />}
+                        </button>
+
+                        <a
+                            href="#"
+                            className="text-gray-100 text-3xl md:hidden animate-item"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                menuToggle();
+                            }}
+                        >
+                            {isMenu ? <TbMenu3 /> : <TbMenu2 />}
+                        </a>
+                    </div>
                 </div>
 
                 {/* Mobile Menu */}
@@ -121,8 +138,9 @@ const navLinks = [
     { id: 1, Element: "Home", link: "home" },
     { id: 2, Element: "About", link: "about" },
     { id: 3, Element: "Skills", link: "skills" },
-    { id: 4, Element: "Projects", link: "projects" },
-    { id: 5, Element: "Contact", link: "contact" },
+    { id: 4, Element: "Experience", link: "experience" },
+    { id: 5, Element: "Projects", link: "projects" },
+    { id: 6, Element: "Contact", link: "contact" },
 ];
 
 export default Navbar;

@@ -1,27 +1,27 @@
-import React from 'react'
-import Navbar from './component/Navbar/Navbar'
-import Hero from './component/Hero/Hero'
-import About from './component/About/About'
-import Skills from './component/Skills/Skills'
-import Projects from './component/Projects/Projects'
-import Contact from './component/Contact/Contact'
-import Footer from './component/Footer/Footer'
-import ScrollToTop from './component/ScrollToTop/ScrollToTop'
-
+import React, { useEffect, useState } from 'react'
+import MainLayout from './layouts/MainLayout'
+import Home from './pages/Home/Home'
 
 
 const App = () => {
+  const [theme, setTheme] = useState('dark')
+
+  const isDarkMode = theme === 'dark'
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'))
+  }
+
   return (
-    <>
-    <Navbar />
-    <Hero />
-    <About />
-    <Skills />
-    <Projects />
-    <Contact />
-    <Footer />
-    <ScrollToTop />
-    </>
+    <div className={`app-shell theme-${theme}`}>
+      <MainLayout isDarkMode={isDarkMode} onToggleTheme={toggleTheme}>
+        <Home />
+      </MainLayout>
+    </div>
   )
 }
 

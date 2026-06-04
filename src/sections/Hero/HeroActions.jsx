@@ -1,7 +1,7 @@
 import React from "react";
 import { FiDownload, FiMail } from "react-icons/fi";
 import { FiArrowRight } from "react-icons/fi";
-import AnimatedLinkButton from "../AnimatedLinkButton/AnimatedLinkButton";
+import AnimatedLinkButton from "../../components/AnimatedLinkButton";
 
 const HeroActions = () => {
   const buttons = [
