@@ -1,5 +1,6 @@
 import React from 'react'
 import Hero from '../../sections/Hero/Hero'
+import Ticker from '../../sections/Ticker/Ticker'
 import About from '../../sections/About/About'
 import Skills from '../../sections/Skills/Skills'
 import Projects from '../../sections/Projects/Projects'
@@ -9,6 +10,7 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <Ticker />
       <About />
       <Skills />
       <Projects />

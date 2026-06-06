@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { FiArrowUp } from 'react-icons/fi'
 
 const ScrollToTop = () => {
   const [visible, setVisible] = useState(false)
@@ -24,7 +25,7 @@ const ScrollToTop = () => {
       aria-label="Scroll to top"
     >
       <span className="relative z-10">
-        <i className="fa-solid fa-arrow-up"></i>
+        <FiArrowUp />
       </span>
       <span
         className="absolute top-0 left-0 w-full h-full bg-emerald-500 origin-bottom-left 

@@ -61,8 +61,8 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
     return (
         <header
             ref={navRef}
-            className={`site-navbar fixed top-0 left-0 w-full z-9999 transition-all duration-500 ${scrolled ? "bg-[#1f242d]" : "bg-[#1f242d]/90"
-                } backdrop-blur-lg shadow-md`}
+            className="site-navbar fixed top-0 left-0 w-full z-9999 transition-all duration-500 backdrop-blur-lg"
+            style={{ backgroundColor: scrolled ? "var(--color-navbar-bg)" : "var(--color-navbar-bg-soft)" }}
         >
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-16 sm:h-18 lg:h-20">
                 <a
@@ -87,8 +87,8 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                                     href={`#${item.link}`}
                                     onClick={(e) => handleClick(e, item.link)}
                                     className={`font-semibold tracking-wider text-gray-100 px-3 py-1.5 rounded-md relative inline-block 
-                                transition-all duration-300 ease-in-out 
-                                ${activeSection === item.link
+                                 transition-all duration-300 ease-in-out 
+                                 ${activeSection === item.link
                                             ? "bg-emerald-500/10 text-emerald-400"
                                             : "hover:bg-emerald-500/10 hover:text-emerald-400"
                                         }`}
@@ -109,9 +109,10 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                             onClick={onToggleTheme}
                             aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
                             aria-pressed={!isDarkMode}
-                            className="theme-toggle animate-item inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-emerald-500/40 text-gray-100 transition-all duration-300 hover:border-emerald-400 hover:bg-emerald-500/10 hover:text-emerald-400"
+                            className="theme-toggle animate-item relative overflow-hidden h-10 w-10 shrink-0 items-center justify-center inline-flex border-2 border-emerald-500 text-gray-100 rounded-lg text-xl transition-all duration-500 group"
                         >
-                            {isDarkMode ? <FiSun /> : <FiMoon />}
+                            <span className="relative z-10">{isDarkMode ? <FiSun /> : <FiMoon />}</span>
+                            <span className="absolute top-0 left-0 w-full h-full bg-emerald-500 origin-bottom-left -rotate-90 group-hover:rotate-0 transition-transform duration-500 ease-in-out z-0"></span>
                         </button>
 
                         <a
