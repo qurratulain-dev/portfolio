@@ -111,8 +111,6 @@ const Contact = () => {
           onSubmit={handleSubmit}
           className="bg-[#111827]/85 border border-white/5 p-4 sm:p-6 rounded-lg shadow-lg shadow-black/20 space-y-5 w-full"
         >
-          <h3 className="text-2xl font-bold text-emerald-500 mb-2">Get In Touch</h3>
-
           <div className="grid sm:grid-cols-2 gap-3">
             {inputFields.slice(0, 2).map(renderInput)}
           </div>

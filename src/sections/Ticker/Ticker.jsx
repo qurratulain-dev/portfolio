@@ -32,7 +32,7 @@ const Ticker = () => {
         .ticker {
           border-top: 1px solid rgba(16,185,129,0.15);
           border-bottom: 1px solid rgba(16,185,129,0.15);
-          background: #1a1f27;
+          background: #1f242d;
           overflow: hidden;
           padding: 0.65rem 0;
         }

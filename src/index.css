@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 * {
   box-sizing: border-box;
@@ -28,8 +29,8 @@ body {
   --color-card-border: rgba(16, 185, 129, 0.2);
   --color-text-primary: #ffffff;
   --color-text-secondary: #b8b8b8;
-  --color-navbar-bg: #1f242d;
-  --color-navbar-bg-soft: rgba(31, 36, 45, 0.9);
+  --color-navbar-bg: #151b23;
+  --color-navbar-bg-soft: rgba(21, 27, 35, 0.9);
   --color-menu-bg: #030712;
 }
 
@@ -41,8 +42,8 @@ body {
   --color-card-border: rgba(15, 118, 110, 0.22);
   --color-text-primary: #17212b;
   --color-text-secondary: #526170;
-  --color-navbar-bg: #ffffff;
-  --color-navbar-bg-soft: rgba(255, 255, 255, 0.9);
+  --color-navbar-bg: #edf3f7;
+  --color-navbar-bg-soft: rgba(237, 243, 247, 0.9);
   --color-menu-bg: #ffffff;
 }
 

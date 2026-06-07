@@ -1,91 +1,49 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import { FaServer, FaLaptopCode, FaDatabase, FaCogs } from "react-icons/fa";
 
-const SkillsSection = ({ title, leftSkills, rightSkills }) => {
-  const sectionRef = useRef(null);
-  const hasAnimatedRef = useRef(false);
-  const [visible, setVisible] = useState(false);
-  const [progressLeft, setProgressLeft] = useState(leftSkills.map(() => 30));
-  const [progressRight, setProgressRight] = useState(rightSkills.map(() => 30));
+const icons = {
+  Backend: <FaServer className="w-5 h-5 text-white" />,
+  Frontend: <FaLaptopCode className="w-5 h-5 text-white" />,
+  Database: <FaDatabase className="w-5 h-5 text-white" />,
+  "DevOps & Tools": <FaCogs className="w-5 h-5 text-white" />,
+};
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimatedRef.current) {
-          hasAnimatedRef.current = true;
-          setVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+const gradients = {
+  Backend: "from-indigo-500 to-indigo-600 shadow-indigo-500/25",
+  Frontend: "from-blue-500 to-blue-600 shadow-blue-500/25",
+  Database: "from-emerald-500 to-emerald-600 shadow-emerald-500/25",
+  "DevOps & Tools": "from-orange-500 to-orange-600 shadow-orange-500/25",
+};
 
-  useEffect(() => {
-    if (!visible) return;
-    let start = null;
-    let animationFrameId = null;
-    const duration = 2000;
+const bgStyles = {
+  Backend: "bg-indigo-500/10 text-indigo-300 hover:bg-indigo-500/20",
+  Frontend: "bg-blue-500/10 text-blue-300 hover:bg-blue-500/20",
+  Database: "bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20",
+  "DevOps & Tools": "bg-orange-500/10 text-orange-300 hover:bg-orange-500/20",
+};
 
-    const animate = (timestamp) => {
-      if (!start) start = timestamp;
-      const progressTime = timestamp - start;
-      const eased = Math.min(progressTime / duration, 1);
-
-      setProgressLeft(
-        leftSkills.map((skill) => Math.floor(30 + (skill.level - 30) * eased))
-      );
-      setProgressRight(
-        rightSkills.map((skill) => Math.floor(30 + (skill.level - 30) * eased))
-      );
-
-      if (eased < 1) animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
-    };
-  }, [visible, leftSkills, rightSkills]);
-
-  const renderSkills = (skills, progressArray) => (
-    <div className="w-full md:w-1/2 space-y-8 sm:space-y-10">
-      {skills.map((skill, index) => (
-        <div key={index} className="relative">
-          <div className="flex items-center gap-2 mb-3">
-            {skill.icon}
-            <span className="font-medium">{skill.name}</span>
-          </div>
-          <span
-            className="absolute -top-1 text-emerald-400 font-semibold transition-transform duration-300"
-            style={{
-              left: `${progressArray[index]}%`,
-              transform: "translateX(-50%)",
-            }}
-          >
-            {progressArray[index]}%
-          </span>
-          <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden relative">
-            <div
-              className="bg-linear-to-r from-emerald-500 to-emerald-700 h-3 rounded-full transition-[width] duration-75 ease-linear"
-              style={{
-                width: `${progressArray[index]}%`,
-              }}
-            ></div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+const SkillsSection = ({ category }) => {
+  const { title, skills } = category;
 
   return (
-    <div ref={sectionRef} className="text-white flex-1 mt-10 sm:mt-12">
-      <h2 className="text-2xl font-bold text-white my-5 sm:my-6">{title}</h2>
-      <div className="flex flex-col md:flex-row justify-between gap-10 lg:gap-16">
-        {renderSkills(leftSkills, progressLeft)}
-        {renderSkills(rightSkills, progressRight)}
+    <div className="group relative bg-white dark:bg-slate-800/80 rounded-2xl border border-gray-200 dark:border-slate-700 p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <div className="flex flex-col items-start mb-5">
+        <div className={`p-3 rounded-xl bg-gradient-to-br shadow-lg mb-3 ${gradients[title]}`}>
+          {icons[title]}
+        </div>
+        <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">
+          {title}
+        </h3>
+      </div>
+      <div className="flex flex-wrap gap-2.5">
+        {skills.map((skill, i) => (
+          <span
+            key={i}
+            className={`px-3 py-1.5 rounded-lg text-base font-medium transition-transform duration-200 hover:scale-105 ${bgStyles[title]}`}
+          >
+            {skill}
+          </span>
+        ))}
       </div>
     </div>
   );

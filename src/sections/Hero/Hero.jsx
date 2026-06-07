@@ -5,7 +5,7 @@ import HeroActions from "./HeroActions";
 
 const Hero = () => {
   return (
-    <section id="home" className="section-surface-primary scroll-mt-20">
+    <section id="home" className="section-surface-secondary scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-6 sm:pt-28 sm:pb-8 lg:pt-30 xl:pt-28 xl:pb-10 flex items-center justify-center flex-col-reverse md:flex-row">
         <div className="w-full max-w-3xl mx-auto text-center">
           {/* Intro */}
