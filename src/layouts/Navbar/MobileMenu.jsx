@@ -41,14 +41,14 @@ const MobileMenu = ({ navLinks, isMenu }) => {
 
   return (
     <ul
-      ref={menuRef} className="flex flex-col space-y-6 p-6 rounded-xl bg-gray-950 border border-emerald-500/20 md:hidden justify-between items-center absolute top-20 left-4 right-4 sm:left-10 sm:right-10 z-[1000] shadow-2xl" 
+      ref={menuRef} className="flex flex-col space-y-6 p-6 rounded-xl bg-gray-950 border border-blue-500/20 md:hidden justify-between items-center absolute top-20 left-4 right-4 sm:left-10 sm:right-10 z-[1000] shadow-2xl" 
       style={{ pointerEvents: isMenu ? "auto" : "none" }}>
 
       {navLinks.map((item) => (
         <li key={item.id}>
           <a
             href={`#${item.link}`}
-            className="menu-link font-semibold tracking-wider text-gray-100 hover:text-emerald-400 transition duration-300"
+            className="menu-link font-semibold tracking-wider text-gray-100 hover:text-blue-400 transition duration-300"
           >
             {item.Element}
           </a>

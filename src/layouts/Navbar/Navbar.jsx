@@ -3,7 +3,7 @@ import { FiMoon, FiSun } from "react-icons/fi";
 import { TbMenu2, TbMenu3 } from "react-icons/tb";
 import { gsap } from "gsap";
 import MobileMenu from "./MobileMenu";
-import logo from "../../assets/logo-navbar.png";
+
 
 const Navbar = ({ isDarkMode, onToggleTheme }) => {
     const [isMenu, setIsMenu] = useState(false);
@@ -70,11 +70,9 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                     className="animate-item shrink-0"
                     aria-label="Go to home"
                 >
-                    <img
-                        src={logo}
-                        alt="Qurat portfolio logo"
-                        className="h-8 sm:h-10 lg:h-12 w-auto object-contain"
-                    />
+                    <span className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                        Quratulain<span className="text-blue-500">.dev</span>
+                    </span>
                 </a>
 
                 {/* Right side group */}
@@ -89,8 +87,8 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                                     className={`font-semibold tracking-wider text-gray-100 px-3 py-1.5 rounded-md relative inline-block 
                                  transition-all duration-300 ease-in-out 
                                  ${activeSection === item.link
-                                            ? "bg-emerald-500/10 text-emerald-400"
-                                            : "hover:bg-emerald-500/10 hover:text-emerald-400"
+                                            ? "bg-blue-500/10 text-blue-400"
+                                            : "hover:bg-blue-500/10 hover:text-blue-400"
                                         }`}
                                 >
                                     {item.Element}
@@ -109,10 +107,10 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                             onClick={onToggleTheme}
                             aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
                             aria-pressed={!isDarkMode}
-                            className="theme-toggle animate-item relative overflow-hidden h-10 w-10 shrink-0 items-center justify-center inline-flex border-2 border-emerald-500 text-gray-100 rounded-lg text-xl transition-all duration-500 group"
+                            className="theme-toggle animate-item relative overflow-hidden h-10 w-10 shrink-0 items-center justify-center inline-flex border-2 border-blue-400/60 text-gray-100 rounded-lg text-xl transition-all duration-500 group"
                         >
                             <span className="relative z-10">{isDarkMode ? <FiSun /> : <FiMoon />}</span>
-                            <span className="absolute top-0 left-0 w-full h-full bg-emerald-500 origin-bottom-left -rotate-90 group-hover:rotate-0 transition-transform duration-500 ease-in-out z-0"></span>
+                            <span className="absolute top-0 left-0 w-full h-full bg-accent-gradient origin-bottom-left -rotate-90 group-hover:rotate-0 transition-transform duration-500 ease-in-out z-0"></span>
                         </button>
 
                         <a

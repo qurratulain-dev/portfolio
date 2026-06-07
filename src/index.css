@@ -26,8 +26,11 @@ body {
   --color-section-primary: #1f242d;
   --color-section-secondary: #151b23;
   --color-card-bg: rgba(17, 24, 39, 0.85);
-  --color-card-border: rgba(16, 185, 129, 0.2);
+  --color-card-border: rgba(59, 130, 246, 0.2);
+  --color-primary-accent: #4f46e5;
+  --color-secondary-accent: #06b6d4;
   --color-text-primary: #ffffff;
+  --grey: #b8b8b8;
   --color-text-secondary: #b8b8b8;
   --color-navbar-bg: #151b23;
   --color-navbar-bg-soft: rgba(21, 27, 35, 0.9);
@@ -39,12 +42,22 @@ body {
   --color-section-primary: #ffffff;
   --color-section-secondary: #edf3f7;
   --color-card-bg: rgba(255, 255, 255, 0.9);
-  --color-card-border: rgba(15, 118, 110, 0.22);
+  --color-card-border: rgba(37, 99, 235, 0.22);
   --color-text-primary: #17212b;
+  --grey: #526170;
   --color-text-secondary: #526170;
   --color-navbar-bg: #edf3f7;
   --color-navbar-bg-soft: rgba(237, 243, 247, 0.9);
   --color-menu-bg: #ffffff;
+  --color-primary-accent: #4f46e5;
+  --color-secondary-accent: #06b6d4;
+}
+
+.bg-accent-gradient {
+  --tw-gradient-from: var(--color-primary-accent);
+  --tw-gradient-to: var(--color-secondary-accent);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
 
 .app-shell {
@@ -103,9 +116,9 @@ body {
 .theme-light .border-white\/5,
 .theme-light .border-gray-800,
 .theme-light .border-\[\#b8b8b8\]\/70,
-.theme-light .border-emerald-500\/20,
-.theme-light .border-emerald-600\/30,
-.theme-light .border-emerald-600\/40 {
+.theme-light .border-blue-500\/20,
+.theme-light .border-blue-600\/30,
+.theme-light .border-blue-600\/40 {
   border-color: var(--color-card-border);
 }
 

@@ -53,7 +53,7 @@ const Contact = () => {
   const renderInput = (field) => (
     <fieldset
       key={field.name}
-      className="rounded-lg border border-[#b8b8b8]/70 px-3 pb-2 transition-colors duration-300 focus-within:border-emerald-500"
+      className="rounded-lg border border-[#b8b8b8]/70 px-3 pb-2 transition-colors duration-300 focus-within:border-blue-400/60"
     >
       <legend className="px-2 text-xs font-medium tracking-wide text-[#b8b8b8]">
         {field.label}
@@ -77,10 +77,10 @@ const Contact = () => {
           role="status"
           aria-live="polite"
           className="toast-enter fixed top-24 right-4 z-9999 w-[min(24rem,calc(100vw-2rem))] overflow-hidden rounded-lg 
-                     border border-emerald-500/40 bg-gray-900 text-[#b8b8b8] shadow-2xl shadow-black/30"
+                     border border-blue-400/60/40 bg-gray-900 text-[#b8b8b8] shadow-2xl shadow-black/30"
         >
           <div className="flex items-start gap-3 px-4 py-4">
-            <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400">
+            <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-500/10 text-blue-400">
               <FiCheckCircle className="text-xl" />
             </span>
             <div className="min-w-0 flex-1">
@@ -99,7 +99,7 @@ const Contact = () => {
             </button>
           </div>
           <div className="h-1 bg-gray-800">
-            <div className="toast-progress h-full bg-emerald-500"></div>
+            <div className="toast-progress h-full bg-blue-500"></div>
           </div>
         </div>
       )}
@@ -119,7 +119,7 @@ const Contact = () => {
             {inputFields.slice(2, 4).map(renderInput)}
           </div>
 
-          <fieldset className="rounded-lg border border-[#b8b8b8]/70 px-3 pb-2 transition-colors duration-300 focus-within:border-emerald-500">
+          <fieldset className="rounded-lg border border-[#b8b8b8]/70 px-3 pb-2 transition-colors duration-300 focus-within:border-blue-400/60">
             <legend className="px-2 text-xs font-medium tracking-wide text-[#b8b8b8]">
               Your Message
             </legend>
@@ -135,12 +135,12 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="relative overflow-hidden border-2 border-emerald-500 text-white px-6 py-3 rounded-lg
+            className="relative overflow-hidden border-2 border-blue-400/60 text-white px-6 py-3 rounded-lg
                        font-medium transition-all duration-500 group flex items-center gap-2 mx-auto"
           >
             <span className="relative z-10">Send Message -&gt;</span>
             <span
-              className="absolute top-0 left-0 w-full h-full bg-emerald-500 origin-bottom-left 
+              className="absolute top-0 left-0 w-full h-full bg-accent-gradient origin-bottom-left 
                          -rotate-90 group-hover:rotate-0 transition-transform duration-500
                          ease-in-out z-0"
             ></span>

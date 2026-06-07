@@ -71,11 +71,11 @@ const RightAbout = () => {
   ];
 
   const cardStyle =
-    "font-semibold tracking-wider text-gray-100 px-4 py-5 rounded-lg relative transition-all duration-300 ease-in-out bg-[#111827]/85 border border-emerald-600/30 shadow-lg shadow-black/10 hover:bg-emerald-500/10 hover:text-emerald-400";
+    "font-semibold tracking-wider text-gray-100 px-4 py-5 rounded-lg relative transition-all duration-300 ease-in-out bg-[#111827]/85 border border-blue-600/30 shadow-lg shadow-black/10 hover:bg-blue-500/10 hover:text-blue-400";
 
   return (
     <div className="basis-full md:basis-[62%] w-full">
-      <p className="font-light text-emerald-500 text-xl sm:text-2xl mb-2">ABOUT ME</p>
+      <p className="font-light text-blue-500 text-xl sm:text-2xl mb-2">ABOUT ME</p>
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 leading-snug text-white">
         Building Modern & Scalable Web Applications
       </h2>
@@ -90,10 +90,10 @@ const RightAbout = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         {aboutCards.map(({ icon, title, content }, index) => (
           <div key={index} className={cardStyle}>
-            <div className="mb-3 flex h-10 w-10 items-center justify-center text-3xl text-emerald-400">
+            <div className="mb-3 flex h-10 w-10 items-center justify-center text-3xl text-blue-400">
               {icon}
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-emerald-400">{title}</h3>
+            <h3 className="text-xl font-semibold mb-3 text-blue-400">{title}</h3>
             {content}
           </div>
         ))}

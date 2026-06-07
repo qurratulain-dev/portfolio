@@ -30,8 +30,8 @@ const Ticker = () => {
 
       <style>{`
         .ticker {
-          border-top: 1px solid rgba(16,185,129,0.15);
-          border-bottom: 1px solid rgba(16,185,129,0.15);
+          border-top: 1px solid rgba(59,130,246,0.15);
+          border-bottom: 1px solid rgba(59,130,246,0.15);
           background: #1f242d;
           overflow: hidden;
           padding: 0.65rem 0;
@@ -61,7 +61,7 @@ const Ticker = () => {
           text-transform: uppercase;
         }
         .tick-item i {
-          color: #10b981;
+          color: #3b82f6;
           font-size: 0.55rem;
         }
       `}</style>
