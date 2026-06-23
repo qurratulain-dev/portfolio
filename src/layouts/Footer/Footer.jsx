@@ -17,7 +17,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="section-surface-secondary text-[#888888] pt-8 sm:pt-10 pb-6 border-t border-gray-800">
+    <footer className="text-[#888888] pt-8 sm:pt-10 pb-6 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 items-center">
         <div className="text-left">
           <a href="#home" aria-label="Go to home" className="text-xl sm:text-2xl font-bold text-white tracking-tight no-underline">
@@ -49,14 +49,12 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="relative overflow-hidden border border-blue-400/60 text-white w-7 h-7 rounded-md 
-                           inline-flex items-center justify-center text-sm transition-all duration-500 group"
+                className="relative overflow-hidden text-white w-7 h-7 rounded-md 
+                           inline-flex items-center justify-center text-sm transition-all duration-500 ghost-btn"
+                style={{ border: "1px solid #3F3F46" }}
               >
+                <span className="ghost-sweep" />
                 <span className="relative z-10">{icon}</span>
-                <span
-                  className="absolute top-0 left-0 w-full h-full bg-accent-gradient origin-bottom-left 
-                             -rotate-90 group-hover:rotate-0 transition-transform duration-500 ease-in-out z-0"
-                ></span>
               </a>
             ))}
           </div>

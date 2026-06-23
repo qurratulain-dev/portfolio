@@ -1,11 +1,12 @@
 import React from "react";
-import { FaServer, FaLaptopCode, FaDatabase, FaCogs } from "react-icons/fa";
+import { FaServer, FaLaptopCode, FaDatabase, FaCogs, FaPlug } from "react-icons/fa";
 
 const icons = {
   Backend: <FaServer className="w-5 h-5 text-white" />,
   Frontend: <FaLaptopCode className="w-5 h-5 text-white" />,
   Database: <FaDatabase className="w-5 h-5 text-white" />,
   "DevOps & Tools": <FaCogs className="w-5 h-5 text-white" />,
+  "APIs & Integrations": <FaPlug className="w-5 h-5 text-white" />,
 };
 
 const gradients = {
@@ -14,6 +15,7 @@ const gradients = {
   Database: "bg-gradient-to-br from-emerald-500 to-emerald-600 shadow-emerald-500/25",
   "DevOps & Tools": "bg-gradient-to-br from-purple-500 to-purple-600 shadow-purple-500/25",
   "AI Tools": "bg-gradient-to-br from-amber-500 to-orange-500 shadow-amber-500/25",
+  "APIs & Integrations": "bg-gradient-to-br from-teal-500 to-teal-600 shadow-teal-500/25",
 };
 
 const bgStyles = {
@@ -22,6 +24,7 @@ const bgStyles = {
   Database: "bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20",
   "DevOps & Tools": "bg-purple-500/10 text-purple-300 hover:bg-purple-500/20",
   "AI Tools": "bg-amber-500/10 text-amber-300 hover:bg-amber-500/20",
+  "APIs & Integrations": "bg-teal-500/10 text-teal-300 hover:bg-teal-500/20",
 };
 
 const SkillsSection = ({ category }) => {

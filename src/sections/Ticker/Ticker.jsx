@@ -1,9 +1,9 @@
 import React from "react";
 
 const techStack = [
-  "PHP", "Laravel", "React", "SaaS & Multi-Tenant Systems",
-  "MySQL", "REST APIs", "JavaScript", "Tailwind CSS", "Bootstrap",
-  "GSAP", "Git", "Responsive Design", "Vite",
+  "PHP", "Laravel", "React.js", "SaaS & Multi-Tenant Systems",
+  "MySQL", "REST APIs", "JavaScript", "Tailwind CSS", "Bootstrap", 
+  "JQuery", "AJAX", "GSAP", "Git", "Responsive Design", "CI/CD",  "HTML5", "CSS3",
 ];
 
 const Ticker = () => {
@@ -32,7 +32,7 @@ const Ticker = () => {
         .ticker {
           border-top: 1px solid rgba(59,130,246,0.15);
           border-bottom: 1px solid rgba(59,130,246,0.15);
-          background: #1f242d;
+          background: var(--bg1);
           overflow: hidden;
           padding: 0.65rem 0;
         }

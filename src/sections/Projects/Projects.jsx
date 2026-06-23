@@ -21,16 +21,26 @@ const upcomingHighlights = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="section-surface-secondary section-divider-soft scroll-mt-20 py-10 sm:py-12 lg:py-14">
+    <section id="projects" className="section-divider-soft scroll-mt-20 py-10 sm:py-12 lg:py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-blue-500 text-center">
-          Projects
-        </h2>
-
-        <p className="text-center my-3 text-[#b8b8b8] max-w-2xl mx-auto">
-          My portfolio projects are being organized and will be displayed here
-          soon.
-        </p>
+        <div className="text-center mb-10 sm:mb-14">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="w-8 h-px bg-blue-400/40 inline-block" />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em]"
+                  style={{ color: "#3B82F6" }}>
+              Projects
+            </span>
+          </div>
+          <h2
+            className="font-extrabold"
+            style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 800, color: "#FAFAFA", letterSpacing: "-0.02em" }}
+          >
+            What I'm Working On.
+          </h2>
+          <p style={{ fontSize: "0.95rem", color: "#71717A", maxWidth: "480px", lineHeight: 1.7 }} className="mx-auto mt-3">
+            My portfolio projects are being organized and will be displayed here soon.
+          </p>
+        </div>
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {upcomingHighlights.map((item) => (

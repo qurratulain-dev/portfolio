@@ -1,41 +1,16 @@
-import { aboutGsapAnimation } from "./aboutGsap";
-import React, { useEffect, useRef } from "react";
-
+import React from "react";
 
 const LeftAbout = () => {
-  const aboutRef = useRef(null);
-
-    useEffect(() => {
-        aboutGsapAnimation(aboutRef);
-    }, []);
   return (
-    <div ref={aboutRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-5 sm:gap-6 basis-full md:basis-[38%] w-full">
-                    {/* Experience Box */}
-                    <div  className="group border border-blue-600/40 bg-[#111827]/70 shadow-lg shadow-black/10 
-                  rounded-lg text-center px-6 sm:px-8 py-8 transition-all duration-300 ease-in-out 
-                  hover:bg-blue-500/5 hover:border-blue-400/60 
-                  aspect-square w-full max-w-[360px] mx-auto flex flex-col justify-center items-center">
-                        <h3 className="font-bold text-blue-400 counter text-6xl sm:text-7xl lg:text-8xl" data-target="8">
-                            0
-                        </h3>
-                        <p className="text-[#b8b8b8] text-2xl sm:text-3xl lg:text-4xl font-semibold mt-5">
-                            Months of Experience
-                        </p>
-                    </div>
-
-                    {/* Projects Box */}
-                    <div className="group border border-blue-600/40 bg-[#111827]/70 shadow-lg shadow-black/10 
-                  rounded-lg text-center p-4 transition-all duration-300 ease-in-out 
-                  hover:bg-blue-500/5 hover:border-blue-400/60 
-                   aspect-square w-full max-w-[360px] mx-auto flex flex-col justify-center items-center">
-                        <h3 className="text-4xl font-bold text-blue-400 counter" data-target="15">
-                            0
-                        </h3>
-                        <p className="text-[#b8b8b8] mt-2 text-2xl font-semibold">
-                            Projects Completed
-                        </p>
-                    </div>
-                </div>
+    <div className="about-photo-wrap" style={{ position: "sticky", top: "80px" }}>
+      <div className="about-photo" style={{ width: "100%", aspectRatio: "3/4", borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", position: "relative" }}>
+        <img src="/profile.png" alt="Profile" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top, rgba(9,9,11,0.95), transparent)", padding: "2rem 1rem 1rem", display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.7rem", color: "#b8b8b8", letterSpacing: "0.08em" }}>
+          <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22C55E", boxShadow: "0 0 6px #22C55E", flexShrink: 0 }} />
+          Available for opportunities
+        </div>
+      </div>
+    </div>
   )
 }
 

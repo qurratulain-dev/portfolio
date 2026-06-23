@@ -1,100 +1,60 @@
 import React from "react";
-import { FaReact } from "react-icons/fa";
-import { SiLaravel } from "react-icons/si";
-
-const iconClass = "h-8 w-8";
-
-const EducationIcon = () => (
-  <svg className={iconClass} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M3 8.5 12 4l9 4.5-9 4.5L3 8.5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-    <path d="M7 11v4.5c0 1.7 2.2 3 5 3s5-1.3 5-3V11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M20 9v5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-  </svg>
-);
-
-const InterestIcon = () => (
-  <svg className={iconClass} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M12 3v3.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M18.4 5.6 16.1 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M21 12h-3.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M5.6 5.6 7.9 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M3 12h3.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M8.5 15.6h7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M9.3 19h5.4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <path d="M8 11a4 4 0 1 1 8 0c0 1.5-.8 2.5-1.7 3.4-.5.5-.8 1-.8 1.6h-3c0-.6-.3-1.1-.8-1.6C8.8 13.5 8 12.5 8 11Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-  </svg>
-);
 
 const RightAbout = () => {
-  const aboutCards = [
-    {
-      icon: <EducationIcon />,
-      title: "Education",
-      content: (
-        <p className="text-[#b8b8b8] text-sm leading-relaxed">
-          BS in Computer Science - <br></br>Specializing in Full-Stack Architecture, Database Design & Modern Web Development
-        </p>
-      ),
-    },
-    {
-      icon: <InterestIcon />,
-      title: "Interests",
-      content: (
-        <ul className="text-[#b8b8b8] space-y-2 text-sm">
-          <li>React & Modern UI Development</li>
-          <li>Backend Development & APIs</li>
-          <li>Learning Modern Technologies</li>
-        </ul>
-      ),
-    },
-    {
-      icon: <SiLaravel className={iconClass} />,
-      title: "Laravel Developer",
-      content: (
-        <ul className="text-[#b8b8b8] space-y-2 text-sm">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-        </ul>
-      ),
-    },
-    {
-      icon: <FaReact className={iconClass} />,
-      title: "React Developer",
-      content: (
-        <ul className="text-[#b8b8b8] space-y-2 text-sm">
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-        </ul>
-      ),
-    },
-  ];
-
-  const cardStyle =
-    "font-semibold tracking-wider text-gray-100 px-4 py-5 rounded-lg relative transition-all duration-300 ease-in-out bg-[#111827]/85 border border-blue-600/30 shadow-lg shadow-black/10 hover:bg-blue-500/10 hover:text-blue-400";
-
   return (
-    <div className="basis-full md:basis-[62%] w-full">
-      <p className="font-light text-blue-500 text-xl sm:text-2xl mb-2">ABOUT ME</p>
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 leading-snug text-white">
-        Building Modern & Scalable Web Applications
-      </h2>
+    <div className="about-content">
+      <h3 style={{ fontSize: "1.5rem", fontWeight: 700, color: "#FAFAFA", letterSpacing: "-0.02em", marginBottom: "1.5rem", lineHeight: 1.3 }}>
+        I'm <span style={{ color: "#3B82F6" }}>QURATULAIN</span>, a Full Stack Developer based in Gujranwala, Pakistan.
+      </h3>
 
-      <p className="text-[#b8b8b8] leading-relaxed mb-8 max-w-2xl">
-        I'm a web developer focused on building clean, responsive, and
-        user-friendly digital experiences. I enjoy working with React.js for
-        modern interfaces and Laravel for structured backend development, while
-        continuously improving my skills through real-world projects.
+      <p className="text-[#b8b8b8] text-sm sm:text-base leading-relaxed mb-5" style={{ color: "#71717A", fontSize: "0.95rem", lineHeight: 1.8, marginBottom: "1.2rem" }}>
+        I specialize in Laravel and React, building applications that handle real business workflows — session tracking,
+        contract signing, multi-role access, payment processing, reporting, and file management. I care about clean
+        architecture and code that stays maintainable long after delivery.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-        {aboutCards.map(({ icon, title, content }, index) => (
-          <div key={index} className={cardStyle}>
-            <div className="mb-3 flex h-10 w-10 items-center justify-center text-3xl text-blue-400">
-              {icon}
-            </div>
-            <h3 className="text-xl font-semibold mb-3 text-blue-400">{title}</h3>
-            {content}
+      <p style={{ color: "#71717A", fontSize: "0.95rem", lineHeight: 1.8, marginBottom: "1.2rem" }}>
+        Currently working at <strong className="text-white font-medium">BitStorm Solutions</strong> as a Full Stack Developer,
+        where I built a complete SaaS product from the ground up. My primary focus is on backend development with Laravel —
+        architecting RESTful APIs, designing database schemas, implementing business logic, and ensuring system scalability
+        and maintainability.
+      </p>
+
+      <p style={{ color: "#71717A", fontSize: "0.95rem", lineHeight: 1.8, marginBottom: "1.2rem" }}>
+        I hold a BS in Computer Science from <strong className="text-white font-medium">Virtual University of Pakistan (CGPA 3.65, August 2026)</strong>.
+        Alongside my job, I'm building PolyCV — a Laravel SaaS using the Claude API for AI-powered resume
+        tailoring with an async queue pipeline.
+      </p>
+
+      {/* Stats */}
+      <div className="flex border border-white/10  overflow-hidden mt-8" style={{ borderRadius: "var(--r, 12px)" }}>
+        <div className="flex-1 py-5 px-4 text-center border-r border-white/10">
+          <span className="text-2xl sm:text-3xl font-extrabold text-blue-400 block leading-none tracking-tight">6+</span>
+          <span className="text-[10px] font-mono text-[#b8b8b8] uppercase tracking-widest mt-1 block">Months Exp.</span>
+        </div>
+        <div className="flex-1 py-5 px-4 text-center border-r border-white/10">
+          <span className="text-2xl sm:text-3xl font-extrabold text-blue-400 block leading-none tracking-tight">15+</span>
+          <span className="text-[10px] font-mono text-[#b8b8b8] uppercase tracking-widest mt-1 block">Projects</span>
+        </div>
+        <div className="flex-1 py-5 px-4 text-center">
+          <span className="text-2xl sm:text-3xl font-extrabold text-blue-400 block leading-none tracking-tight">10k+</span>
+          <span className="text-[10px] font-mono text-[#b8b8b8] uppercase tracking-widest mt-1 block">Daily Users</span>
+        </div>
+      </div>
+
+      {/* What I Bring */}
+      <div className="mt-8 flex flex-col gap-3">
+        {[
+          "Full-stack feature ownership — from schema to deployment",
+          "Clean, maintainable code with focus on long-term architecture",
+          "Real-world experience with payment processing, auth, and reporting",
+          "Independent delivery with minimal supervision",
+        ].map((item, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", fontSize: "0.88rem", color: "#71717A", lineHeight: 1.6 }}>
+            <svg className="w-3 h-3 text-blue-400 mt-1 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            {item}
           </div>
         ))}
       </div>

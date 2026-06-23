@@ -28,14 +28,12 @@ const SocialLinks = () => {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="animate-item relative overflow-hidden w-10 h-10 border-2 border-blue-400/60 text-white 
-                     inline-flex items-center justify-center rounded-lg text-xl transition-all duration-500 group"
+          className="animate-item w-10 h-10 text-white 
+                     inline-flex items-center justify-center rounded-lg text-xl transition-all duration-500 ghost-btn"
+          style={{ border: "1px solid #3F3F46" }}
         >
+          <span className="ghost-sweep" />
           <span className="relative z-10">{icon}</span>
-          <span
-            className="absolute top-0 left-0 w-full h-full bg-accent-gradient origin-bottom-left 
-                       -rotate-90 group-hover:rotate-0 transition-transform duration-500 ease-in-out z-0"
-          ></span>
         </a>
       ))}
     </div>

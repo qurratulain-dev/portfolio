@@ -66,12 +66,13 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
         >
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-16 sm:h-18 lg:h-20">
                 <a
-                    href="#home"
+                    href="/"
+                    onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setActiveSection('home'); }}
                     className="animate-item shrink-0"
                     aria-label="Go to home"
                 >
                     <span className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                        Quratulain<span className="text-blue-500">.dev</span>
+                        Quratulain<span style={{ color: "#3B82F6" }}>.dev</span>
                     </span>
                 </a>
 
@@ -107,10 +108,11 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                             onClick={onToggleTheme}
                             aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
                             aria-pressed={!isDarkMode}
-                            className="theme-toggle animate-item relative overflow-hidden h-10 w-10 shrink-0 items-center justify-center inline-flex border-2 border-blue-400/60 text-gray-100 rounded-lg text-xl transition-all duration-500 group"
+                            className="theme-toggle animate-item h-10 w-10 shrink-0 items-center justify-center inline-flex text-gray-100 rounded-lg text-xl transition-all duration-500 ghost-btn"
+                            style={{ border: "1px solid #3F3F46" }}
                         >
+                            <span className="ghost-sweep" />
                             <span className="relative z-10">{isDarkMode ? <FiSun /> : <FiMoon />}</span>
-                            <span className="absolute top-0 left-0 w-full h-full bg-accent-gradient origin-bottom-left -rotate-90 group-hover:rotate-0 transition-transform duration-500 ease-in-out z-0"></span>
                         </button>
 
                         <a
@@ -134,8 +136,7 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
 };
 
 const navLinks = [
-    { id: 1, Element: "Home", link: "home" },
-    { id: 2, Element: "About", link: "about" },
+    { id: 1, Element: "About", link: "about" },
     { id: 3, Element: "Skills", link: "skills" },
     { id: 4, Element: "Experience", link: "experience" },
     { id: 5, Element: "Projects", link: "projects" },
