@@ -139,8 +139,9 @@ const navLinks = [
     { id: 1, Element: "About", link: "about" },
     { id: 3, Element: "Skills", link: "skills" },
     { id: 4, Element: "Experience", link: "experience" },
-    { id: 5, Element: "Projects", link: "projects" },
-    { id: 6, Element: "Contact", link: "contact" },
+    { id: 5, Element: "Certifications", link: "certifications" },
+    { id: 6, Element: "Projects", link: "projects" },
+    { id: 7, Element: "Contact", link: "contact" },
 ];
 
 export default Navbar;

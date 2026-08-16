@@ -1,87 +1,81 @@
 import React from "react";
-import { TypeAnimation } from "react-type-animation";
 import SocialLinks from "./SocialLinks";
 import HeroActions from "./HeroActions";
 
+const stats = [
+  { value: "6+", label: "Months Exp." },
+  { value: "15+", label: "Projects" },
+  { value: "10k+", label: "Daily Users" },
+  { value: "3.65", label: "CGPA" },
+];
+
 const Hero = () => {
   return (
-    <section id="home" className="scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-6 sm:pt-28 sm:pb-8 lg:pt-30 xl:pt-28 xl:pb-10 flex items-center justify-center flex-col-reverse md:flex-row">
-        <div className="w-full max-w-3xl mx-auto text-center">
-          {/* Intro */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 sm:mb-8">
-            <span className="block font-light text-blue-500 text-lg sm:text-xl md:text-2xl mb-2">I AM</span>
-            <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold">Quratulain</span>, a{" "}
-          </h1>
+    <section id="home" className="relative scroll-mt-20 overflow-hidden">
+      {/* Subtle dot-grid background (depth without clutter) */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.12]"
+        style={{
+          backgroundImage: "radial-gradient(circle, #3b82f6 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+      {/* Soft glow top-right */}
+      <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Typewriter Roles */}
-          <div className="mb-6 sm:mb-8">
-            <TypeAnimation
-              sequence={[
-                "Full-Stack Developer",
-                2000,
-                "Laravel  Developer",
-                2000,
-                "Backend  Developer",
-                2000,
-                "React  Developer",
-                2000,
-                "Web Application Developer",
-                2000,
-              ]}
-              wrapper="h2"
-              cursor={true}
-              repeat={Infinity}
-              className="block min-h-16 text-xl sm:text-2xl md:text-4xl font-semibold text-blue-500 hero-typewriter"
-            />
-          </div>
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+        {/* Availability badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 mb-8">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+          </span>
+          <span className="font-mono text-xs text-emerald-400 tracking-wide">
+            Open to new opportunities
+          </span>
+        </div>
 
-          {/* Paragraph */}
-          <p className="text-[#b8b8b8] max-w-xl mx-auto leading-relaxed text-sm sm:text-base mb-6">
-            Full-Stack Developer skilled in building responsive and user-friendly web applications using React, Laravel, PHP, MySQL, and REST APIs.
-            Passionate about creating modern interfaces, developing secure backend functionality, and contributing to real-world projects.
-          </p>
+        {/* Terminal prompt line (eye-catching dev touch) */}
+        <p className="font-mono text-sm text-gray-500 mb-4">
+          <span className="text-emerald-400">➜</span>{" "}
+          <span className="text-blue-400">~/quratulain</span> whoami
+          <span className="animate-pulse text-white">_</span>
+        </p>
 
-          {/* Availability */}
-          <div className="inline-flex items-center gap-2 mx-auto px-3 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-7">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-400" />
-            </span>
-            <span className="text-[10px] sm:text-xs font-medium text-blue-400/80 tracking-wide uppercase">
-              Available for new opportunities
-            </span>
-          </div>
+        {/* Markdown-style heading */}
+        <h1 className="font-mono text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-8">
+          <span className="text-blue-500 mr-3">#</span>Full-Stack
+          <br />
+          Developer<span className="text-blue-500">.</span>
+        </h1>
 
-          {/* Buttons */}
-          <div className="mb-10 sm:mb-12">
-            <HeroActions />
-          </div>
+        {/* Intro with bold keywords */}
+        <p className="text-base sm:text-lg md:text-xl text-[#9ca3af] leading-relaxed max-w-3xl mb-10">
+          <span className="text-white font-semibold">Quratulain Naseem</span> — I build
+          production-grade web applications:{" "}
+          <span className="text-white font-semibold">
+            multi-tenant SaaS platforms, REST APIs, admin dashboards, and payment systems
+          </span>
+          . Currently serving{" "}
+          <span className="text-white font-semibold">10k+ daily users</span> with Laravel
+          &amp; React at BitStorm Solutions.
+        </p>
 
-          {/* Social */}
-          <div className="flex flex-col items-start -ml-1 sm:-ml-2">
-            <p className="font-light text-[#b8b8b8] text-xs sm:text-sm tracking-wider uppercase mb-3">Connect with me</p>
-            <SocialLinks />
-          </div>
+        {/* CTAs */}
+        <div className="mb-12">
+          <HeroActions />
+        </div>
+
+        {/* Socials */}
+        <div className="flex items-center gap-4">
+          <span className="font-mono text-xs text-gray-500 uppercase tracking-wider">
+            // connect
+          </span>
+          <SocialLinks />
         </div>
       </div>
-
-      {/* Scroll down arrow */}
-      <a href="#about" className="flex justify-center pb-3">
-        <span className="text-blue-500 text-2xl cursor-pointer" style={{ animation: "bounceY 1.5s ease-in-out infinite" }}>
-          &#10095;
-        </span>
-      </a>
-
-      <style>{`
-        @keyframes bounceY {
-          0%, 100% { transform: translateY(0) rotate(90deg); }
-          50% { transform: translateY(10px) rotate(90deg); }
-        }
-      `}</style>
     </section>
   );
 };
 
 export default Hero;
-
