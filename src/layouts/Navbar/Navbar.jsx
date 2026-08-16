@@ -71,8 +71,8 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                     className="animate-item shrink-0"
                     aria-label="Go to home"
                 >
-                    <span className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                        Quratulain<span style={{ color: "#3B82F6" }}>.dev</span>
+                    <span className="text-xl sm:text-2xl font-bold text-text tracking-tight">
+                        Quratulain<span style={{ color: "var(--color-accent)" }}>.dev</span>
                     </span>
                 </a>
 
@@ -85,11 +85,11 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                                 <a
                                     href={`#${item.link}`}
                                     onClick={(e) => handleClick(e, item.link)}
-                                    className={`font-semibold tracking-wider text-gray-100 px-3 py-1.5 rounded-md relative inline-block 
+                                    className={`font-semibold tracking-wider text-text px-3 py-1.5 rounded-md relative inline-block 
                                  transition-all duration-300 ease-in-out 
                                  ${activeSection === item.link
-                                            ? "bg-blue-500/10 text-blue-400"
-                                            : "hover:bg-blue-500/10 hover:text-blue-400"
+                                            ? "bg-accent/10 text-accent"
+                                            : "hover:bg-accent/10 hover:text-accent"
                                         }`}
                                 >
                                     {item.Element}
@@ -108,7 +108,7 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                             onClick={onToggleTheme}
                             aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
                             aria-pressed={!isDarkMode}
-                            className="theme-toggle animate-item h-10 w-10 shrink-0 items-center justify-center inline-flex text-gray-100 rounded-lg text-xl transition-all duration-500 ghost-btn"
+                            className="theme-toggle animate-item h-10 w-10 shrink-0 items-center justify-center inline-flex text-text rounded-lg text-xl transition-all duration-500 ghost-btn"
                             style={{ border: "1px solid #3F3F46" }}
                         >
                             <span className="ghost-sweep" />
@@ -117,7 +117,7 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
 
                         <a
                             href="#"
-                            className="text-gray-100 text-3xl md:hidden animate-item"
+                            className="text-text text-3xl md:hidden animate-item"
                             onClick={(e) => {
                                 e.preventDefault();
                                 menuToggle();

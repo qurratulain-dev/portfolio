@@ -42,19 +42,20 @@ const Experience = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-14">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="w-8 h-px bg-blue-400/40 inline-block" />
+            <span className="w-8 h-px bg-accent/40 inline-block" />
             <span className="text-xs font-semibold uppercase tracking-[0.2em]"
-                  style={{ color: "#3B82F6" }}>
+                  style={{ color: "var(--color-accent)" }}>
               Experience
             </span>
+            <span className="w-8 h-px bg-accent/40 inline-block" />
           </div>
           <h2
             className="font-extrabold"
-            style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 800, color: "#FAFAFA", letterSpacing: "-0.02em" }}
+            style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 800, color: "var(--color-text)", letterSpacing: "-0.02em" }}
           >
             6+ month in production.
           </h2>
-          <p style={{ fontSize: "0.95rem", color: "#71717A", maxWidth: "480px", lineHeight: 1.7 }} className="mx-auto mt-3">
+          <p style={{ fontSize: "0.95rem", color: "var(--color-muted)", maxWidth: "480px", lineHeight: 1.7 }} className="mx-auto mt-3">
             My journey building products and leading teams. Real projects, real users, real impact.
           </p>
         </div>
@@ -67,7 +68,7 @@ const Experience = () => {
               style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
             >
               <div>
-                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.72rem", color: "#71717A", lineHeight: 1.6, marginBottom: "0.6rem" }}>
+                <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "0.72rem", color: "var(--color-faint)", lineHeight: 1.6, marginBottom: "0.6rem" }}>
                   {exp.period.split(" — ").map((line, i) => (
                     <span key={i}>
                       {line}
@@ -79,7 +80,7 @@ const Experience = () => {
                   className={`inline-block text-[10px] font-medium tracking-wider uppercase px-2 py-0.5 rounded border ${
                     exp.badge.variant === "current"
                       ? "text-green-400 bg-green-500/10 border-green-500/25"
-                      : "text-indigo-400 bg-indigo-500/10 border-indigo-500/25"
+                      : "text-accent bg-accent/10 border-accent/25"
                   }`}
                 >
                   {exp.badge.label}
@@ -87,16 +88,16 @@ const Experience = () => {
               </div>
 
               <div>
-                <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#FAFAFA", marginBottom: "0.2rem" }}>
+                <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--color-text)", marginBottom: "0.2rem" }}>
                   {exp.title}
                 </h3>
-                <p style={{ fontSize: "0.85rem", color: "#3B82F6", marginBottom: "1rem", fontWeight: 500 }}>
+                <p style={{ fontSize: "0.85rem", color: "var(--color-accent)", marginBottom: "1rem", fontWeight: 500 }}>
                   {exp.company}
                 </p>
                 <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.4rem" }}>
                   {exp.points.map((point, i) => (
-                    <li key={i} style={{ fontSize: "0.88rem", color: "#71717A", lineHeight: 1.65, display: "flex", gap: "0.7rem", alignItems: "baseline" }}>
-                      <span className="text-blue-400 shrink-0">–</span>
+                    <li key={i} style={{ fontSize: "0.88rem", color: "var(--color-muted)", lineHeight: 1.65, display: "flex", gap: "0.7rem", alignItems: "baseline" }}>
+                      <span className="text-accent shrink-0">•</span>
                       {point}
                     </li>
                   ))}

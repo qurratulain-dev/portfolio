@@ -17,11 +17,11 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="text-[#888888] pt-8 sm:pt-10 pb-6 border-t border-gray-800">
+    <footer className="text-faint pt-8 sm:pt-10 pb-6 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 items-center">
         <div className="text-left">
-          <a href="#home" aria-label="Go to home" className="text-xl sm:text-2xl font-bold text-white tracking-tight no-underline">
-            Quratulain<span className="text-blue-500">.dev</span>
+          <a href="#home" aria-label="Go to home" className="text-xl sm:text-2xl font-bold text-text tracking-tight no-underline">
+            Quratulain<span className="text-accent">.dev</span>
           </a>
         </div>
 
@@ -31,7 +31,7 @@ const Footer = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-[#b8b8b8] hover:text-blue-500 no-underline font-semibold"
+                className="text-muted hover:text-accent no-underline font-semibold"
                 style={{ fontSize: "0.92rem", transition: "color 0.2s" }}
               >
                 {link.label}
@@ -49,7 +49,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="relative overflow-hidden text-white w-7 h-7 rounded-md 
+                className="relative overflow-hidden text-text w-7 h-7 rounded-md 
                            inline-flex items-center justify-center text-sm transition-all duration-500 ghost-btn"
                 style={{ border: "1px solid #3F3F46" }}
               >
@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
 
         <div className="text-center">
-          <p className="text-[13px] text-[#b8b8b8] leading-relaxed font-semibold whitespace-nowrap">
+          <p className="text-[13px] text-muted leading-relaxed font-semibold whitespace-nowrap">
             &copy; 2026 QURATULAIN — ALL RIGHTS RESERVED
           </p>
         </div>

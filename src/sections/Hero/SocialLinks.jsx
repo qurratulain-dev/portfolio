@@ -28,7 +28,7 @@ const SocialLinks = () => {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="animate-item w-10 h-10 text-white 
+          className="animate-item w-10 h-10 text-text 
                      inline-flex items-center justify-center rounded-lg text-xl transition-all duration-500 ghost-btn"
           style={{ border: "1px solid #3F3F46" }}
         >

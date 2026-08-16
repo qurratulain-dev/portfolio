@@ -16,12 +16,12 @@ const Hero = () => {
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.12]"
         style={{
-          backgroundImage: "radial-gradient(circle, #3b82f6 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, var(--color-accent) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
       {/* Soft glow top-right */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-32 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
         {/* Availability badge */}
@@ -36,28 +36,28 @@ const Hero = () => {
         </div>
 
         {/* Terminal prompt line (eye-catching dev touch) */}
-        <p className="font-mono text-sm text-gray-500 mb-4">
+        <p className="font-mono text-sm text-faint mb-4">
           <span className="text-emerald-400">➜</span>{" "}
-          <span className="text-blue-400">~/quratulain</span> whoami
-          <span className="animate-pulse text-white">_</span>
+          <span className="text-accent">~/quratulain</span> whoami
+          <span className="animate-pulse text-text">_</span>
         </p>
 
         {/* Markdown-style heading */}
-        <h1 className="font-mono text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-8">
-          <span className="text-blue-500 mr-3">#</span>Full-Stack
+        <h1 className="font-mono text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-text tracking-tight mb-8">
+          <span className="text-accent mr-3">#</span>Full-Stack
           <br />
-          Developer<span className="text-blue-500">.</span>
+          Developer<span className="text-accent">.</span>
         </h1>
 
         {/* Intro with bold keywords */}
-        <p className="text-base sm:text-lg md:text-xl text-[#9ca3af] leading-relaxed max-w-3xl mb-10">
-          <span className="text-white font-semibold">Quratulain Naseem</span> — I build
+        <p className="text-base sm:text-lg md:text-xl text-muted leading-relaxed max-w-3xl mb-10">
+          <span className="text-text font-semibold">Quratulain Naseem</span> — I build
           production-grade web applications:{" "}
-          <span className="text-white font-semibold">
+          <span className="text-text font-semibold">
             multi-tenant SaaS platforms, REST APIs, admin dashboards, and payment systems
           </span>
           . Currently serving{" "}
-          <span className="text-white font-semibold">10k+ daily users</span> with Laravel
+          <span className="text-text font-semibold">10k+ daily users</span> with Laravel
           &amp; React at BitStorm Solutions.
         </p>
 
@@ -68,7 +68,7 @@ const Hero = () => {
 
         {/* Socials */}
         <div className="flex items-center gap-4">
-          <span className="font-mono text-xs text-gray-500 uppercase tracking-wider">
+          <span className="font-mono text-xs text-faint uppercase tracking-wider">
             // connect
           </span>
           <SocialLinks />

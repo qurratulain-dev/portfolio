@@ -56,12 +56,12 @@ const Ticker = () => {
           flex-shrink: 0;
           font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
           font-size: 0.72rem;
-          color: #9ca3af;
+          color: var(--color-muted);
           letter-spacing: 0.1em;
           text-transform: uppercase;
         }
         .tick-item i {
-          color: #3b82f6;
+          color: var(--color-accent);
           font-size: 0.55rem;
         }
       `}</style>

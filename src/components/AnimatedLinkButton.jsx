@@ -9,15 +9,15 @@ const AnimatedLinkButton = ({ icon, text, href, variant = "outlined", style: cus
       href={href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className={`text-white px-5 sm:px-6 py-3 rounded-lg 
+      className={`text-text px-5 sm:px-6 py-3 rounded-lg 
        font-medium inline-flex items-center justify-center gap-2 
        ${isFilled
              ? "hover:-translate-y-1 transition-all duration-300"
             : "ghost-btn"
        }`}
       style={{
-        backgroundColor: isFilled ? "#3B82F6" : undefined,
-        border: isFilled ? "1px solid #3B82F6" : undefined,
+        backgroundColor: isFilled ? "var(--color-accent)" : undefined,
+        border: isFilled ? "1px solid var(--color-accent)" : undefined,
         ...customStyle,
       }}
     >
