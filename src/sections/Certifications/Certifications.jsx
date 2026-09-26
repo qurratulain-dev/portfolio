@@ -1,4 +1,5 @@
 import React from "react";
+import SectionHeading from "../../components/SectionHeading";
 
 const certifications = [
   { title: "Laravel Certification", issuer: "Bytewise Community", year: "2024" },
@@ -15,47 +16,32 @@ const certifications = [
 
 const Certifications = () => {
   return (
-    <section id="certifications" className="section-divider-soft scroll-mt-20 py-10 sm:py-12 lg:py-14">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 sm:mb-14">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="w-8 h-px bg-accent/40 inline-block" />
-            <span className="text-xs font-semibold uppercase tracking-[0.2em]"
-                  style={{ color: "var(--color-accent)" }}>
-              Certifications
-            </span>
-            <span className="w-8 h-px bg-accent/40 inline-block" />
-          </div>
-          <h2
-            className="font-extrabold"
-            style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", fontWeight: 800, color: "var(--color-text)", letterSpacing: "-0.02em" }}
-          >
-            {certifications.length}+ verified credentials.
-          </h2>
-          <p style={{ fontSize: "0.95rem", color: "var(--color-muted)", maxWidth: "480px", lineHeight: 1.7 }} className="mx-auto mt-3">
-            Continuous learning across backend, frontend, databases, and professional skills.
-          </p>
-        </div>
+    <section id="certifications" className="site-section section-divider-soft scroll-mt-20">
+      <div className="container-site">
+        <SectionHeading
+          eyebrow="Certifications"
+          title={`${certifications.length}+ verified credentials.`}
+          subtitle="Continuous learning across backend, frontend, databases, and professional skills."
+        />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Hairline rows instead of boxed cards: with a top border per item, uneven
+            title lengths leave no visible card-shaped gaps, and 6 accent-tile +
+            lift-hover combinations disappear entirely. */}
+        <ul className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
           {certifications.map((cert) => (
-            <div
-              key={cert.title}
-              className="group border border-white/10 rounded-lg p-5 bg-white/[0.02] hover:border-accent/40 hover:bg-accent/5 hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <span className="flex items-center justify-center w-8 h-8 rounded-md bg-accent/10 text-accent font-mono text-sm">
+            <li key={cert.title} className="border-t border-border pt-5">
+              <h3 className="text-base font-semibold leading-snug tracking-tight text-text">
+                {/* Decorative only: the heading already states "verified credentials". */}
+                <span className="mr-1.5 select-none text-sm text-faint" aria-hidden="true">
                   ✓
                 </span>
-                <span className="font-mono text-xs text-faint">{cert.year}</span>
-              </div>
-              <h3 className="text-text font-semibold mb-1">
                 {cert.title}
               </h3>
-              <p className="font-mono text-xs text-faint">{cert.issuer}</p>
-            </div>
+              <p className="mt-2 text-sm text-muted">{cert.issuer}</p>
+              <p className="mt-1.5 font-mono text-xs leading-6 text-muted">{cert.year}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

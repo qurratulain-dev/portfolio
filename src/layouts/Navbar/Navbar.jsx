@@ -4,6 +4,9 @@ import { TbMenu2, TbMenu3 } from "react-icons/tb";
 import { gsap } from "gsap";
 import MobileMenu from "./MobileMenu";
 
+const reduceMotion = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const Navbar = ({ isDarkMode, onToggleTheme }) => {
     const [isMenu, setIsMenu] = useState(false);
@@ -12,7 +15,7 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
     const navRef = useRef(null);
 
     const menuToggle = () => {
-        setIsMenu(!isMenu);
+        setIsMenu((prev) => !prev);
     };
 
     const handleClick = (e, sectionId) => {
@@ -42,96 +45,117 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    //  Close mobile menu on Escape
+    useEffect(() => {
+        if (!isMenu) return;
+        const onKey = (e) => {
+            if (e.key === "Escape") setIsMenu(false);
+        };
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [isMenu]);
+
     // ✅ GSAP entry animation
     useEffect(() => {
         const elements = navRef.current.querySelectorAll(".animate-item");
+        if (reduceMotion()) {
+            gsap.set(elements, { opacity: 1, y: 0 });
+            return;
+        }
         gsap.fromTo(
             elements,
-            { opacity: 0, y: 25 },
+            { opacity: 0, y: 16 },
             {
                 opacity: 1,
                 y: 0,
                 duration: 0.5,
-                stagger: 0.15,
+                stagger: 0.08,
                 ease: "power3.out",
             }
         );
     }, []);
 
     return (
-        <header
-            ref={navRef}
-            className="site-navbar fixed top-0 left-0 w-full z-9999 transition-all duration-500 backdrop-blur-lg"
-            style={{ backgroundColor: scrolled ? "var(--color-navbar-bg)" : "var(--color-navbar-bg-soft)" }}
-        >
-            <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-16 sm:h-18 lg:h-20">
-                <a
-                    href="/"
-                    onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setActiveSection('home'); }}
-                    className="animate-item shrink-0"
-                    aria-label="Go to home"
-                >
-                    <span className="text-xl sm:text-2xl font-bold text-text tracking-tight">
-                        Quratulain<span style={{ color: "var(--color-accent)" }}>.dev</span>
-                    </span>
-                </a>
+        <>
+            {isMenu && (
+                <div className="mobile-backdrop" onClick={menuToggle} aria-hidden="true" />
+            )}
+            <header
+                ref={navRef}
+                className={`site-navbar fixed top-0 left-0 w-full z-[9999] backdrop-blur-lg ${
+                    scrolled ? "is-scrolled" : ""
+                }`}
+            >
+                <nav className="container-site flex items-center h-16 lg:h-18">
+                    <a
+                        href="/"
+                        onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setActiveSection('home'); }}
+                        className="nav-brand animate-item shrink-0"
+                        aria-label="Go to home"
+                    >
+                        Quratulain<span className="nav-brand-accent">.dev</span>
+                    </a>
 
-                {/* Right side group */}
-                <div className="flex items-center gap-4 ml-auto">
-                    {/* Nav Links */}
-                    <ul className="md:flex hidden items-center gap-2 lg:gap-6">
-                        {navLinks.map((item) => (
-                            <li key={item.id} className="animate-item">
-                                <a
-                                    href={`#${item.link}`}
-                                    onClick={(e) => handleClick(e, item.link)}
-                                    className={`font-semibold tracking-wider text-text px-3 py-1.5 rounded-md relative inline-block 
-                                 transition-all duration-300 ease-in-out 
-                                 ${activeSection === item.link
-                                            ? "bg-accent/10 text-accent"
-                                            : "hover:bg-accent/10 hover:text-accent"
-                                        }`}
-                                >
-                                    {item.Element}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
+                    {/* Right side group */}
+                    <div className="flex items-center gap-2 sm:gap-3 ml-auto">
+                        {/* Nav Links */}
+                        <ul className="hidden lg:flex items-center gap-1">
+                            {navLinks.map((item) => (
+                                <li key={item.id} className="animate-item">
+                                    <a
+                                        href={`#${item.link}`}
+                                        onClick={(e) => handleClick(e, item.link)}
+                                        className={`nav-link${activeSection === item.link ? " nav-link-active" : ""}`}
+                                        aria-current={activeSection === item.link ? "true" : undefined}
+                                    >
+                                        {item.Element}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
 
-                    {/* Vertical divider */}
-                    <div className="hidden md:block w-px h-6 bg-gray-500/40"></div>
+                        {/* Vertical divider */}
+                        <div className="hidden lg:block w-px h-5 bg-border" aria-hidden="true"></div>
 
-                    {/* Mobile menu button */}
-                    <div className="flex items-center gap-3 sm:gap-5">
-                        <button
-                            type="button"
-                            onClick={onToggleTheme}
-                            aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-                            aria-pressed={!isDarkMode}
-                            className="theme-toggle animate-item h-10 w-10 shrink-0 items-center justify-center inline-flex text-text rounded-lg text-xl transition-all duration-500 ghost-btn"
-                            style={{ border: "1px solid #3F3F46" }}
-                        >
-                            <span className="ghost-sweep" />
-                            <span className="relative z-10">{isDarkMode ? <FiSun /> : <FiMoon />}</span>
-                        </button>
+                        <div className="flex items-center gap-2 sm:gap-3">
+                            {/* Theme toggle */}
+                            <button
+                                type="button"
+                                onClick={onToggleTheme}
+                                aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                                aria-pressed={!isDarkMode}
+                                title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+                                className="btn-icon ghost-btn animate-item"
+                            >
+                                <span className="ghost-sweep" />
+                                <span className="relative z-10">{isDarkMode ? <FiSun /> : <FiMoon />}</span>
+                            </button>
 
-                        <a
-                            href="#"
-                            className="text-text text-3xl md:hidden animate-item"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                menuToggle();
-                            }}
-                        >
-                            {isMenu ? <TbMenu3 /> : <TbMenu2 />}
-                        </a>
+                            {/* Mobile menu button */}
+                            <button
+                                type="button"
+                                onClick={menuToggle}
+                                aria-label="Toggle navigation menu"
+                                aria-expanded={isMenu}
+                                aria-controls="mobile-menu"
+                                className="btn-icon ghost-btn lg:hidden animate-item"
+                            >
+                                <span className="ghost-sweep" />
+                                <span className="relative z-10">{isMenu ? <TbMenu3 /> : <TbMenu2 />}</span>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                {/* Mobile Menu */}
-                <MobileMenu navLinks={navLinks} isMenu={isMenu} />
-            </nav>
-        </header>
+                    {/* Mobile Menu */}
+                    <MobileMenu
+                        navLinks={navLinks}
+                        isMenu={isMenu}
+                        activeSection={activeSection}
+                        onNavigate={handleClick}
+                    />
+                </nav>
+            </header>
+        </>
     );
 };
 
@@ -145,4 +169,3 @@ const navLinks = [
 ];
 
 export default Navbar;
-

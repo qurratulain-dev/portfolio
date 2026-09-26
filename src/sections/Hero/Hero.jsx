@@ -23,21 +23,21 @@ const Hero = () => {
       {/* Soft glow top-right */}
       <div className="absolute -top-32 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+      <div className="relative container-site pt-28 pb-20">
         {/* Availability badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 mb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-success/30 bg-success/10 mb-8">
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
           </span>
-          <span className="font-mono text-xs text-emerald-400 tracking-wide">
+          <span className="font-mono text-xs text-success tracking-wide">
             Open to new opportunities
           </span>
         </div>
 
         {/* Terminal prompt line (eye-catching dev touch) */}
         <p className="font-mono text-sm text-faint mb-4">
-          <span className="text-emerald-400">➜</span>{" "}
+          <span className="text-success">➜</span>{" "}
           <span className="text-accent">~/quratulain</span> whoami
           <span className="animate-pulse text-text">_</span>
         </p>

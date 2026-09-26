@@ -11,14 +11,14 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <FiLinkedin size={14} />, href: "http://www.linkedin.com/in/qurratulain-reactdeveloper", label: "LinkedIn" },
-    { icon: <FiGithub size={14} />, href: "https://github.com/qurratulain-dev", label: "GitHub" },
-    { icon: <FiMail size={14} />, href: "mailto:dev.quratulain@gmail.com", label: "Email" },
+    { icon: <FiLinkedin size={16} />, href: "http://www.linkedin.com/in/qurratulain-reactdeveloper", label: "LinkedIn" },
+    { icon: <FiGithub size={16} />, href: "https://github.com/qurratulain-dev", label: "GitHub" },
+    { icon: <FiMail size={16} />, href: "mailto:dev.quratulain@gmail.com", label: "Email" },
   ];
 
   return (
-    <footer className="text-faint pt-8 sm:pt-10 pb-6 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6 items-center">
+    <footer className="site-footer text-faint pt-8 sm:pt-10 pb-6">
+      <div className="container-site grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
         <div className="text-left">
           <a href="#home" aria-label="Go to home" className="text-xl sm:text-2xl font-bold text-text tracking-tight no-underline">
             Quratulain<span className="text-accent">.dev</span>
@@ -31,8 +31,7 @@ const Footer = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-muted hover:text-accent no-underline font-semibold"
-                style={{ fontSize: "0.92rem", transition: "color 0.2s" }}
+                className="text-muted hover:text-accent no-underline text-sm font-semibold transition-colors"
               >
                 {link.label}
               </a>
@@ -49,9 +48,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="relative overflow-hidden text-text w-7 h-7 rounded-md 
-                           inline-flex items-center justify-center text-sm transition-all duration-500 ghost-btn"
-                style={{ border: "1px solid #3F3F46" }}
+                className="btn-icon ghost-btn"
               >
                 <span className="ghost-sweep" />
                 <span className="relative z-10">{icon}</span>
@@ -61,7 +58,7 @@ const Footer = () => {
         </div>
 
         <div className="text-center">
-          <p className="text-[13px] text-muted leading-relaxed font-semibold whitespace-nowrap">
+          <p className="text-xs text-muted leading-relaxed font-semibold whitespace-nowrap">
             &copy; 2026 QURATULAIN — ALL RIGHTS RESERVED
           </p>
         </div>

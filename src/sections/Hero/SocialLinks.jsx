@@ -21,16 +21,15 @@ const SocialLinks = () => {
   ];
 
   return (
-    <div className="flex items-center gap-5">
+    <div className="flex items-center gap-3">
       {socialLinks.map(({ id, icon, href }) => (
         <a
           key={id}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="animate-item w-10 h-10 text-text 
-                     inline-flex items-center justify-center rounded-lg text-xl transition-all duration-500 ghost-btn"
-          style={{ border: "1px solid #3F3F46" }}
+          aria-label={`${icon.type.displayName || "Social"} link`}
+          className="btn-icon ghost-btn animate-item"
         >
           <span className="ghost-sweep" />
           <span className="relative z-10">{icon}</span>

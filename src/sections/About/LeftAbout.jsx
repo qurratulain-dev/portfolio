@@ -2,16 +2,23 @@ import React from "react";
 
 const LeftAbout = () => {
   return (
-    <div className="about-photo-wrap w-full max-w-[340px] mx-auto sm:max-w-none sm:mx-0" style={{ position: "sticky", top: "80px" }}>
-      <div className="about-photo" style={{ width: "100%", aspectRatio: "3/4", borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", position: "relative" }}>
-        <img src="/profile.png" alt="Profile" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }} />
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top, rgba(9,9,11,0.95), transparent)", padding: "2rem 1rem 1rem", display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.7rem", color: "var(--color-muted)", letterSpacing: "0.08em" }}>
-          <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#22C55E", boxShadow: "0 0 6px #22C55E", flexShrink: 0 }} />
-          Available for opportunities
+    <div className="about-photo-wrap mx-auto w-full max-w-[min(18rem,74vw)] sm:max-w-[21rem] lg:sticky lg:top-20 lg:mx-0 lg:max-w-none">
+      {/* 2/3 matches the 1024x1536 source, so the portrait is shown uncropped. */}
+      <div className="about-photo relative aspect-[2/3] w-full overflow-hidden rounded-xl border border-border-strong bg-surface shadow-[var(--ui-shadow)]">
+        <img
+          src="/profile.png"
+          alt="Profile"
+          className="block h-full w-full object-cover"
+        />
+        <div className="absolute inset-x-3 bottom-3 flex items-center gap-2 rounded-lg border border-border bg-surface/85 px-3 py-1.5 backdrop-blur-sm">
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-success ring-2 ring-success/25" />
+          <span className="text-xs font-medium tracking-[0.02em] text-text">
+            Available for opportunities
+          </span>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LeftAbout
+export default LeftAbout;
