@@ -31,10 +31,11 @@ const skillCategories = [
 ];
 
 /* One hairline top and bottom bound the whole list, so the categories read as a
-   single system rather than five separate boxes. A 14rem definition column keeps
-   every chip row starting on the same vertical line at md and up. */
+   single system rather than five separate boxes. A 12rem definition column keeps
+   every chip row starting on the same vertical line at md and up, while leaving
+   the wider share of the row to the skills themselves. */
 const rowLayout =
-  "grid grid-cols-1 items-start gap-x-8 gap-y-3 border-b border-token py-6 md:grid-cols-[14rem_minmax(0,1fr)]";
+  "grid grid-cols-1 items-start gap-x-8 gap-y-3 border-b border-token py-6 md:grid-cols-[12rem_minmax(0,1fr)]";
 
 /* h-8 on both the category name and the chips keeps their text optically centred
    on the same line without any offset maths. */

@@ -382,6 +382,68 @@ button {
 }
 
 /* ---------------------------------------------------------------------------
+   PROJECTS (every rule below is scoped to #projects, so no other section can
+   be affected). There is no project imagery to present yet, so the section's
+   visual weight comes from one full-width panel rather than a grid of small
+   placeholder cards: a 1px accent cap, a faint token-driven grid, and
+   generously padded rows split by hairlines — the same row idiom Skills and
+   Certifications already use, at a larger scale.
+--------------------------------------------------------------------------- */
+
+.projects-section .section-header {
+  margin-bottom: clamp(2.25rem, 5vw, 3.25rem);
+}
+
+/* One step above the shared section title: Projects should read as a primary
+   section without competing with the hero. */
+.projects-section .section-title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.projects-section .section-subtitle {
+  max-width: 38rem;
+}
+
+.project-panel {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--radius-xl);
+}
+
+/* Accent cap: a single hairline that fades out, so the section has one clear
+   brand moment instead of scattered accent fills. */
+.project-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    var(--ui-accent),
+    color-mix(in srgb, var(--ui-accent) 25%, transparent) 45%,
+    transparent
+  );
+}
+
+/* Faint technical grid drawn from --ui-hairline, so it stays visible in the
+   light theme without inverting the dark one, and masked so it fades out
+   before the last row instead of reading as graph paper. */
+.project-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--ui-hairline) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ui-hairline) 1px, transparent 1px);
+  background-size: 2.5rem 2.5rem;
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent 60%);
+  mask-image: linear-gradient(to bottom, #000, transparent 60%);
+}
+
+/* ---------------------------------------------------------------------------
    ICON TILES / CHIPS
 --------------------------------------------------------------------------- */
 

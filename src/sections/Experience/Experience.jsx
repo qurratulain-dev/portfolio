@@ -57,7 +57,7 @@ const Experience = () => {
             return (
               <li
                 key={exp.period}
-                className="grid grid-cols-1 gap-y-4 py-6 sm:py-8 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-x-8"
+                className="grid grid-cols-1 gap-y-4 py-6 sm:py-8 lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-x-8"
               >
                 <div className="flex flex-col items-start">
                   <p className="font-mono text-xs leading-6 text-muted">{exp.period}</p>
@@ -68,7 +68,7 @@ const Experience = () => {
                   </span>
                 </div>
 
-                <div className="flex max-w-[42rem] gap-4">
+                <div className="flex gap-4">
                   <div className="flex w-4 shrink-0 flex-col items-center">
                     {/* my-2 + h-2 = 24px, matching the role line box, so the marker
                         sits on the title's centre line without offset maths. */}
