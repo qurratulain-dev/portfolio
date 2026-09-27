@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useTheme } from './hooks/useTheme'
 import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home/Home'
 
 
 const App = () => {
-  const [theme, setTheme] = useState('dark')
-
-  const isDarkMode = theme === 'dark'
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-  }, [theme])
-
-  const toggleTheme = () => {
-    setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'))
-  }
+  const { theme, isDarkMode, toggleTheme } = useTheme()
 
   return (
     <div className={`app-shell theme-${theme}`}>

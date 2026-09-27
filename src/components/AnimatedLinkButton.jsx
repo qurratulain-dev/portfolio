@@ -13,7 +13,8 @@ const AnimatedLinkButton = ({ icon, text, href, variant = "outlined", style: cus
       style={customStyle}
     >
       {!isFilled && <span className="ghost-sweep" />}
-      <span className="w-5 h-5 relative z-10">{icon}</span>
+      {/* Decorative: the visible label already names the link. */}
+      <span className="w-5 h-5 relative z-10" aria-hidden="true">{icon}</span>
       <span className="relative z-10">{text}</span>
     </a>
   );

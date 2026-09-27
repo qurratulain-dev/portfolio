@@ -28,7 +28,9 @@ const Footer = () => {
               tracking and colour, nav-brand-accent puts ".dev" in JetBrains Mono
               at the accent colour. No animate-item — that is a GSAP hook scoped
               to the Navbar's own ref and would do nothing down here. */}
-          <a href="#home" className="nav-brand shrink-0" aria-label="Go to home">
+          {/* The wordmark is the accessible name; adding an aria-label here
+              would replace the visible text and break WCAG 2.5.3. */}
+          <a href="#home" className="nav-brand shrink-0">
             Quratulain<span className="nav-brand-accent">.dev</span>
           </a>
 

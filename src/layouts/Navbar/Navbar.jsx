@@ -13,6 +13,8 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
     const navRef = useRef(null);
+    const menuBtnRef = useRef(null);
+    const menuWasOpen = useRef(false);
 
     const menuToggle = () => {
         setIsMenu((prev) => !prev);
@@ -25,24 +27,47 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
         setIsMenu(false);
     };
 
-    //  Scroll background effect
+    /* Scroll background + active-section tracking.
+
+       The raw listener used to re-run querySelectorAll("section") and re-read
+       every section's offsetTop on every scroll event, so a single flick could
+       fire dozens of times and each one forced a synchronous layout. Two
+       changes, same observable result:
+         - the section list is resolved once instead of per event;
+         - work is coalesced into one requestAnimationFrame per frame, so at
+           most one read happens per painted frame however many scroll events
+           arrive. A frame flag (not a timestamp) is used so a slow frame still
+           ends up reading the final scroll position rather than skipping it.
+       offsetTop is deliberately still read per frame rather than cached: the
+       document reflows as fonts and the portrait settle, and a cached value
+       would freeze the active link at a stale offset. */
     useEffect(() => {
-        const handleScroll = () => {
+        const sections = Array.from(document.querySelectorAll("section"));
+        let frame = 0;
+        let readActive = () => {
+            frame = 0;
             setScrolled(window.scrollY > 50);
 
             // find active section while scrolling
-            const sections = document.querySelectorAll("section");
             let current = "home";
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop - 120;
-                if (window.scrollY >= sectionTop) {
+            for (const section of sections) {
+                if (window.scrollY >= section.offsetTop - 120) {
                     current = section.getAttribute("id");
                 }
-            });
+            }
             setActiveSection(current);
         };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        const onScroll = () => {
+            if (frame) return;
+            frame = requestAnimationFrame(readActive);
+        };
+        // sections are laid out after mount, so seed the initial state
+        readActive();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            if (frame) cancelAnimationFrame(frame);
+        };
     }, []);
 
     //  Close mobile menu on Escape
@@ -53,6 +78,30 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
         };
         window.addEventListener("keydown", onKey);
         return () => window.removeEventListener("keydown", onKey);
+    }, [isMenu]);
+
+    /* Disclosure focus handling, for every route out of the open state
+       (Escape, the backdrop, or picking a link) rather than only for Escape:
+         opening  -> focus the first menu link, so the next Tab stays inside
+                     the panel the user just opened instead of jumping back
+                     out to the page behind it;
+         closing  -> hand focus back to the trigger, because the link the user
+                     was on has just become aria-hidden and tabIndex -1, and
+                     leaving focus there would strand them.
+       Focus is deliberately not trapped while open: this is a navigation
+       disclosure, not a dialog, so Tab still walks the page normally. The
+       menuWasOpen ref keeps the initial closed render from stealing focus. */
+    useEffect(() => {
+        if (isMenu) {
+            menuWasOpen.current = true;
+            document
+                .getElementById("mobile-menu")
+                ?.querySelector(".menu-link")
+                ?.focus();
+        } else if (menuWasOpen.current) {
+            menuWasOpen.current = false;
+            menuBtnRef.current?.focus();
+        }
     }, [isMenu]);
 
     // ✅ GSAP entry animation
@@ -86,12 +135,14 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                     scrolled ? "is-scrolled" : ""
                 }`}
             >
-                <nav className="container-site flex items-center h-16 lg:h-18">
+                <nav aria-label="Primary" className="container-site flex items-center h-16 lg:h-18">
+                    {/* No aria-label here on purpose: the visible wordmark
+                        "Quratulain.dev" is already the link's accessible name,
+                        and overriding it would break WCAG 2.5.3 Label in Name. */}
                     <a
                         href="/"
                         onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setActiveSection('home'); }}
                         className="nav-brand animate-item shrink-0"
-                        aria-label="Go to home"
                     >
                         Quratulain<span className="nav-brand-accent">.dev</span>
                     </a>
@@ -123,25 +174,29 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                                 type="button"
                                 onClick={onToggleTheme}
                                 aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-                                aria-pressed={!isDarkMode}
                                 title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
                                 className="btn-icon ghost-btn animate-item"
                             >
                                 <span className="ghost-sweep" />
-                                <span className="relative z-10">{isDarkMode ? <FiSun /> : <FiMoon />}</span>
+                                <span className="relative z-10" aria-hidden="true">{isDarkMode ? <FiSun /> : <FiMoon />}</span>
                             </button>
 
-                            {/* Mobile menu button */}
+                            {/* Mobile menu button. The label states the action
+                                the press will perform, and swaps with the state,
+                                instead of the vague "Toggle navigation menu".
+                                aria-expanded mirrors isMenu and aria-controls
+                                points at MobileMenu's own id. */}
                             <button
+                                ref={menuBtnRef}
                                 type="button"
                                 onClick={menuToggle}
-                                aria-label="Toggle navigation menu"
+                                aria-label={isMenu ? "Close navigation menu" : "Open navigation menu"}
                                 aria-expanded={isMenu}
                                 aria-controls="mobile-menu"
                                 className="btn-icon ghost-btn lg:hidden animate-item"
                             >
                                 <span className="ghost-sweep" />
-                                <span className="relative z-10">{isMenu ? <TbMenu3 /> : <TbMenu2 />}</span>
+                                <span className="relative z-10" aria-hidden="true">{isMenu ? <TbMenu3 /> : <TbMenu2 />}</span>
                             </button>
                         </div>
                     </div>

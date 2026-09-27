@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,6 +12,215 @@
       rel="stylesheet"
     />
     <title>Quratulain | Full Stack Developer | Laravel &amp; React Expert</title>
+
+    <!-- ============================================================
+         SEO / social metadata
+         Canonical origin comes from package.json "homepage", which is
+         also what `gh-pages -d dist` publishes to. The GitHub user in
+         that path (qurratulain-dev) matches the account linked from
+         the site, so the two agree. Kept in one place via the
+         absolute URLs below; every path is the /Qurat_Portfolio/
+         sub-path, not a bare root path.
+         ============================================================ -->
+    <meta
+      name="description"
+      content="Quratulain Naseem is a full-stack developer in Gujranwala, Pakistan, building production-grade multi-tenant SaaS platforms, REST APIs, admin dashboards and payment systems with Laravel and React."
+    />
+    <meta name="author" content="Quratulain Naseem" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://qurratulain-dev.github.io/Qurat_Portfolio" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Quratulain Naseem" />
+    <meta
+      property="og:title"
+      content="Quratulain | Full Stack Developer | Laravel &amp; React Expert"
+    />
+    <meta
+      property="og:description"
+      content="Quratulain Naseem is a full-stack developer in Gujranwala, Pakistan, building production-grade multi-tenant SaaS platforms, REST APIs, admin dashboards and payment systems with Laravel and React."
+    />
+    <meta property="og:url" content="https://qurratulain-dev.github.io/Qurat_Portfolio" />
+    <meta
+      property="og:image"
+      content="https://qurratulain-dev.github.io/Qurat_Portfolio/profile.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1536" />
+    <meta property="og:image:alt" content="Portrait of Quratulain Naseem, full-stack developer" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter/X. The card is `summary` rather than `summary_large_image`
+         because the only real image asset is a 1024x1536 portrait (0.67:1);
+         the large-image card crops to 1.91:1 and would slice a thin band
+         out of it. Swap to summary_large_image once a 1200x630 card
+         image exists. -->
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Quratulain | Full Stack Developer | Laravel &amp; React Expert"
+    />
+    <meta
+      name="twitter:description"
+      content="Quratulain Naseem is a full-stack developer in Gujranwala, Pakistan, building production-grade multi-tenant SaaS platforms, REST APIs, admin dashboards and payment systems with Laravel and React."
+    />
+    <meta
+      name="twitter:image"
+      content="https://qurratulain-dev.github.io/Qurat_Portfolio/profile.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Portrait of Quratulain Naseem, full-stack developer"
+    />
+
+    <!-- Icons. The rel=icon link at the top of <head> points at /favicon.png,
+         which is the intended icon but is not in public/ yet, so that request
+         still 404s - see the report. The apple-touch-icon below points at the
+         portrait that does exist, so it is deliberately not a second favicon. -->
+    <link rel="apple-touch-icon" href="/profile.png" />
+
+    <!-- Person structured data. Every value below is copied from content that
+         already ships in the app (Hero, Skills, About, Footer, Contact);
+         nothing is inferred. Dates and qualifications are deliberately left
+         out because the source strings are ambiguous. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Quratulain Naseem",
+        "url": "https://qurratulain-dev.github.io/Qurat_Portfolio",
+        "image": "https://qurratulain-dev.github.io/Qurat_Portfolio/profile.png",
+        "jobTitle": "Full-Stack Developer",
+        "email": "dev.quratulain@gmail.com",
+        "description": "Full-stack developer in Gujranwala, Pakistan building production-grade multi-tenant SaaS platforms, REST APIs, admin dashboards and payment systems with Laravel and React.",
+        "sameAs": [
+          "https://github.com/qurratulain-dev",
+          "http://www.linkedin.com/in/qurratulain-reactdeveloper",
+          "https://wa.me/923157753260"
+        ],
+        "homeLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Gujranwala",
+            "addressCountry": "PK"
+          }
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Bitstorm Solutions"
+        },
+        "knowsAbout": [
+          "PHP",
+          "Laravel",
+          "React.js",
+          "JavaScript (ES6+)",
+          "Tailwind CSS",
+          "HTML / CSS",
+          "MySQL",
+          "Database Design",
+          "Query Optimization",
+          "REST APIs",
+          "API Integration",
+          "Authentication",
+          "Sanctum Auth",
+          "Roles/Permissions",
+          "Queues/Jobs",
+          "Git",
+          "CI/CD"
+        ],
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Laravel Certification",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Bytewise Community"
+            }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Meta Backend Developer",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Meta - Coursera"
+            }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Meta Frontend Developer",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Meta - Coursera"
+            }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Programming with JavaScript",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Meta - Coursera"
+            }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "React Basics",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Meta - Coursera"
+            }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "One Million Prompters Initiative - AI Prompt Engineering",
+            "credentialCategory": "certificate",
+            "recognizedBy": {
+              "@type": "Organization",
+              "name": "Dubai Crown Prince"
+            }
+          }
+        ]
+      }
+    </script>
+    <script>
+      /* Theme bootstrap — runs before first paint so the correct palette is on
+         <html> already, which is what prevents a flash of the wrong theme.
+         Kept inline, tiny and dependency-free on purpose; it mirrors the
+         resolution order in src/hooks/useTheme.js:
+           1. explicit user choice in localStorage
+           2. OS / browser preference (prefers-color-scheme)
+           3. dark, the default identity
+         Every access is guarded so blocked storage or a missing matchMedia can
+         never break the page. */
+      (function () {
+        var root = document.documentElement;
+        try {
+          var KEY = "portfolio-theme";
+          var stored = null;
+          try {
+            stored = window.localStorage.getItem(KEY);
+          } catch (e) {}
+
+          var theme =
+            stored === "dark" || stored === "light"
+              ? stored
+              : window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+
+          root.setAttribute("data-theme", theme);
+        } catch (e) {
+          root.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
