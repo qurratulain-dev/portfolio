@@ -50,9 +50,8 @@ const Footer = () => {
               </ul>
             </nav>
 
-            {/* Navbar/Header social treatment: ghost-btn + ghost-sweep, unchanged
-                so the hover, timing and sheen are literally the same component.
-                Only the box size differs (h-9 instead of .btn-icon's 2.5rem). */}
+            {/* Share the same compact social button size and neutral hover as
+                the Hero links. */}
             <ul className="flex items-center gap-2.5">
               {socialLinks.map(({ icon, href, label }) => (
                 <li key={label}>
@@ -61,7 +60,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="ghost-btn inline-flex h-9 w-9 items-center justify-center rounded-lg"
+                    className="ghost-btn social-icon-btn"
                   >
                     <span className="ghost-sweep" />
                     <span className="relative z-10" aria-hidden="true">

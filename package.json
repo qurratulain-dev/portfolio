@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://qurratulain-dev.github.io/Qurat_Portfolio",
+  "homepage": "https://qurratulain-naseem.vercel.app/",
   "scripts": {
     "dev": "vite",
     "build": "vite build --configLoader runner",

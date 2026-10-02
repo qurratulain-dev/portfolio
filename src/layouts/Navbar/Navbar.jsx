@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FiMoon, FiSun } from "react-icons/fi";
 import { TbMenu2, TbMenu3 } from "react-icons/tb";
 import { gsap } from "gsap";
 import MobileMenu from "./MobileMenu";
@@ -8,7 +7,7 @@ const reduceMotion = () =>
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const Navbar = ({ isDarkMode, onToggleTheme }) => {
+const Navbar = () => {
     const [isMenu, setIsMenu] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
@@ -22,7 +21,9 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
 
     const handleClick = (e, sectionId) => {
         e.preventDefault();
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+        document.getElementById(sectionId)?.scrollIntoView({
+            behavior: reduceMotion() ? "auto" : "smooth",
+        });
         setActiveSection(sectionId);
         setIsMenu(false);
     };
@@ -111,7 +112,7 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
             gsap.set(elements, { opacity: 1, y: 0 });
             return;
         }
-        gsap.fromTo(
+        const tween = gsap.fromTo(
             elements,
             { opacity: 0, y: 16 },
             {
@@ -122,6 +123,10 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                 ease: "power3.out",
             }
         );
+        /* The navbar outlives the page in practice, so this is belt-and-braces,
+           but it costs one line and stops a 0.5s tween writing to detached
+           nodes if the layout ever does unmount mid-entrance. */
+        return () => tween.kill();
     }, []);
 
     return (
@@ -135,13 +140,13 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                     scrolled ? "is-scrolled" : ""
                 }`}
             >
-                <nav aria-label="Primary" className="container-site flex items-center h-16 lg:h-18">
+                <nav aria-label="Primary" className="container-site flex items-center h-16 xl:h-18">
                     {/* No aria-label here on purpose: the visible wordmark
                         "Quratulain.dev" is already the link's accessible name,
                         and overriding it would break WCAG 2.5.3 Label in Name. */}
                     <a
                         href="/"
-                        onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); setActiveSection('home'); }}
+                        onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: reduceMotion() ? 'auto' : 'smooth' }); setActiveSection('home'); }}
                         className="nav-brand animate-item shrink-0"
                     >
                         Quratulain<span className="nav-brand-accent">.dev</span>
@@ -150,7 +155,7 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                     {/* Right side group */}
                     <div className="flex items-center gap-2 sm:gap-3 ml-auto">
                         {/* Nav Links */}
-                        <ul className="hidden lg:flex items-center gap-1">
+                        <ul className="hidden xl:flex items-center gap-1">
                             {navLinks.map((item) => (
                                 <li key={item.id} className="animate-item">
                                     <a
@@ -166,39 +171,25 @@ const Navbar = ({ isDarkMode, onToggleTheme }) => {
                         </ul>
 
                         {/* Vertical divider */}
-                        <div className="hidden lg:block w-px h-5 bg-border" aria-hidden="true"></div>
+                        <div className="hidden xl:block w-px h-5 bg-border" aria-hidden="true"></div>
 
-                        <div className="flex items-center gap-2 sm:gap-3">
-                            {/* Theme toggle */}
-                            <button
-                                type="button"
-                                onClick={onToggleTheme}
-                                aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-                                title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-                                className="btn-icon ghost-btn animate-item"
-                            >
-                                <span className="ghost-sweep" />
-                                <span className="relative z-10" aria-hidden="true">{isDarkMode ? <FiSun /> : <FiMoon />}</span>
-                            </button>
-
-                            {/* Mobile menu button. The label states the action
+                        {/* Mobile menu button. The label states the action
                                 the press will perform, and swaps with the state,
                                 instead of the vague "Toggle navigation menu".
                                 aria-expanded mirrors isMenu and aria-controls
                                 points at MobileMenu's own id. */}
-                            <button
-                                ref={menuBtnRef}
-                                type="button"
-                                onClick={menuToggle}
-                                aria-label={isMenu ? "Close navigation menu" : "Open navigation menu"}
-                                aria-expanded={isMenu}
-                                aria-controls="mobile-menu"
-                                className="btn-icon ghost-btn lg:hidden animate-item"
-                            >
-                                <span className="ghost-sweep" />
-                                <span className="relative z-10" aria-hidden="true">{isMenu ? <TbMenu3 /> : <TbMenu2 />}</span>
-                            </button>
-                        </div>
+                        <button
+                            ref={menuBtnRef}
+                            type="button"
+                            onClick={menuToggle}
+                            aria-label={isMenu ? "Close navigation menu" : "Open navigation menu"}
+                            aria-expanded={isMenu}
+                            aria-controls="mobile-menu"
+                            className="btn-icon ghost-btn xl:hidden animate-item"
+                        >
+                            <span className="ghost-sweep" />
+                            <span className="relative z-10" aria-hidden="true">{isMenu ? <TbMenu3 /> : <TbMenu2 />}</span>
+                        </button>
                     </div>
 
                     {/* Mobile Menu */}

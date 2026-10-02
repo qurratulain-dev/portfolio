@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const techStack = [
   "PHP", "Laravel", "React.js", "SaaS & Multi-Tenant Systems",
@@ -7,6 +7,33 @@ const techStack = [
 ];
 
 const Ticker = () => {
+  const trackRef = useRef(null);
+
+  /* The marquee is a 45s infinite transform animation, so it used to keep
+     compositing a frame every vsync for the whole time the page was open,
+     including the long stretches where the strip sits far off-screen and
+     nobody can see it. An IntersectionObserver parks it with
+     animation-play-state while it is out of view and releases it again on the
+     way back in, so the animation is untouched whenever it is actually
+     visible - it still resumes at the same point in the cycle rather than
+     restarting. Observing costs nothing when the tab is idle or backgrounded,
+     and the observer is disconnected on unmount. The reduced-motion rule
+     below is unaffected: it removes the animation outright, and a paused
+     animation that is never going to run is the same thing either way. */
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        track.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
+      },
+      { threshold: 0 }
+    );
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="ticker">
       {/* Non-moving, screen-reader accessible copy of the stack (the moving
@@ -17,7 +44,7 @@ const Ticker = () => {
       </p>
 
       <div className="ticker-viewport" aria-hidden="true">
-        <div className="ticker-track">
+        <div className="ticker-track" ref={trackRef}>
           {[0, 1].map((copy) => (
             <div className="ticker-group" key={copy}>
               {techStack.map((tech) => (

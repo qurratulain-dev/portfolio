@@ -44,7 +44,11 @@ const ContactCard = ({ icon, title, description, value, href }) => (
           {title}
         </h3>
         <p className="font-mono text-xs text-faint mb-2">{description}</p>
-        <p className="text-sm text-muted truncate">
+        {/* break-words, not truncate: at the narrowest card widths an email or
+            phone number is one unbreakable token, so truncating silently hid
+            most of the address. It now wraps instead, so the full value is
+            always readable. */}
+        <p className="text-sm text-muted break-words">
           {value}
         </p>
       </div>
@@ -75,9 +79,11 @@ const Contact = () => {
         />
 
         {/* A list, so the three contact methods are announced as three items
-            with a count rather than as loose links. Classes are unchanged, so
-            the grid lays out exactly as before. */}
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            with a count rather than as loose links. The three-across grid
+            starts at lg, not md: at 768px the md columns left only ~95px for
+            the value text, which is too narrow to show an address at all. From
+            lg up there is room for three, so desktop is unchanged. */}
+        <ul className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {contacts.map((card) => (
             <li key={card.title} className="flex">
               <ContactCard {...card} />

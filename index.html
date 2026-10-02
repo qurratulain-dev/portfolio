@@ -2,34 +2,62 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark light" />
+    <meta name="color-scheme" content="dark" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts are requested as variable weight ranges (400..800 / 400..700)
+         rather than as separate discrete weights. Google resolves both forms to
+         the exact same woff2 files, but the range form emits 13 @font-face
+         blocks instead of 53 and a 4.9 kB stylesheet instead of 19.3 kB. The
+         render-blocking CSS is ~14 kB smaller for an identical paint, and every
+         weight the design actually uses still resolves. -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&family=JetBrains+Mono:wght@400..700&display=swap"
       rel="stylesheet"
     />
     <title>Quratulain | Full Stack Developer | Laravel &amp; React Expert</title>
 
     <!-- ============================================================
          SEO / social metadata
-         Canonical origin comes from package.json "homepage", which is
-         also what `gh-pages -d dist` publishes to. The GitHub user in
-         that path (qurratulain-dev) matches the account linked from
-         the site, so the two agree. Kept in one place via the
-         absolute URLs below; every path is the /Qurat_Portfolio/
-         sub-path, not a bare root path.
+
+         Canonical origin is https://qurratulain-naseem.vercel.app/ and it
+         is the root of the site (vite `base: '/'`), so every absolute URL
+         below is origin-rooted - no path prefix.
+
+         Why Vercel and not GitHub Pages:
+           - commit df640ab "fix: update base path for vercel deployment"
+             changed vite `base` from '/Qurat_Portfolio/' to '/'; a
+             root-domain base only works on a root-hosting platform
+           - the GitHub repo's own "homepage" field is
+             https://qurratulain-naseem.vercel.app
+           - GitHub Pages is NOT enabled on the repo (has_pages: false),
+             so the old qurratulain-dev.github.io URL serves nothing
+           - the repo is named `portfolio`, so even if Pages were on,
+             .../Qurat_Portfolio could never resolve
+         package.json "homepage" was left on the old Pages URL; it has
+         been corrected to match. If the domain ever changes, update the
+         canonical, og:url, the two image URLs and the JSON-LD url in
+         one pass - they are the only origin-bearing values here.
          ============================================================ -->
+    <link rel="canonical" href="https://qurratulain-naseem.vercel.app/" />
     <meta
       name="description"
-      content="Quratulain Naseem is a full-stack developer in Gujranwala, Pakistan, building production-grade multi-tenant SaaS platforms, REST APIs, admin dashboards and payment systems with Laravel and React."
+      content="Quratulain Naseem, full-stack developer in Gujranwala, Pakistan, building multi-tenant SaaS platforms, REST APIs and payment systems with Laravel and React."
     />
     <meta name="author" content="Quratulain Naseem" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://qurratulain-dev.github.io/Qurat_Portfolio" />
 
+    <!-- Open Graph. og:image is the only raster asset these crawlers ever see,
+         which is why it is the one place a PNG was still costing 693 kB.
+         It is a photograph, so it ships as JPEG: 86.8 kB at quality 90
+         (PSNR 48.6 dB vs the source, i.e. imperceptible) with identical
+         1024x1536 framing. JPEG rather than the WebP the page itself uses,
+         because og:image support for WebP/AVIF is not universal across
+         Facebook, LinkedIn and the chat/IM unfurlers, and a preview that
+         silently fails to render is far worse than a few extra kB.
+         The page portrait is separate: a 26 kB WebP crop loaded only in the
+         About section (see LeftAbout.jsx). -->
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Quratulain Naseem" />
@@ -39,14 +67,14 @@
     />
     <meta
       property="og:description"
-      content="Quratulain Naseem is a full-stack developer in Gujranwala, Pakistan, building production-grade multi-tenant SaaS platforms, REST APIs, admin dashboards and payment systems with Laravel and React."
+      content="Quratulain Naseem, full-stack developer in Gujranwala, Pakistan, building multi-tenant SaaS platforms, REST APIs and payment systems with Laravel and React."
     />
-    <meta property="og:url" content="https://qurratulain-dev.github.io/Qurat_Portfolio" />
+    <meta property="og:url" content="https://qurratulain-naseem.vercel.app/" />
     <meta
       property="og:image"
-      content="https://qurratulain-dev.github.io/Qurat_Portfolio/profile.png"
+      content="https://qurratulain-naseem.vercel.app/og-image.jpg"
     />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="1536" />
     <meta property="og:image:alt" content="Portrait of Quratulain Naseem, full-stack developer" />
@@ -64,35 +92,38 @@
     />
     <meta
       name="twitter:description"
-      content="Quratulain Naseem is a full-stack developer in Gujranwala, Pakistan, building production-grade multi-tenant SaaS platforms, REST APIs, admin dashboards and payment systems with Laravel and React."
+      content="Quratulain Naseem, full-stack developer in Gujranwala, Pakistan, building multi-tenant SaaS platforms, REST APIs and payment systems with Laravel and React."
     />
     <meta
       name="twitter:image"
-      content="https://qurratulain-dev.github.io/Qurat_Portfolio/profile.png"
+      content="https://qurratulain-naseem.vercel.app/og-image.jpg"
     />
     <meta
       name="twitter:image:alt"
       content="Portrait of Quratulain Naseem, full-stack developer"
     />
 
-    <!-- Icons. The rel=icon link at the top of <head> points at /favicon.png,
-         which is the intended icon but is not in public/ yet, so that request
-         still 404s - see the report. The apple-touch-icon below points at the
-         portrait that does exist, so it is deliberately not a second favicon. -->
-    <link rel="apple-touch-icon" href="/profile.png" />
+    <!-- Icons. favicon.png and apple-touch-icon.png are both cut from the
+         portrait master in src/assets/profile-source.png (head crop,
+         x470 y45 370x370), so they are derivatives of a real asset in the
+         repo rather than invented artwork. They fix a 404: the old
+         <link rel="icon"> pointed at a favicon.png that did not exist, and
+         the old apple-touch-icon pointed at the full 1024x1536 portrait,
+         which iOS would centre-crop to the torso. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Person structured data. Every value below is copied from content that
-         already ships in the app (Hero, Skills, About, Footer, Contact);
-         nothing is inferred. Dates and qualifications are deliberately left
-         out because the source strings are ambiguous. -->
+         already ships in the app (Hero, RightAbout, Skills, Certifications,
+         SocialLinks, Contact); nothing is inferred. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Quratulain Naseem",
-        "url": "https://qurratulain-dev.github.io/Qurat_Portfolio",
-        "image": "https://qurratulain-dev.github.io/Qurat_Portfolio/profile.png",
-        "jobTitle": "Full-Stack Developer",
+        "url": "https://qurratulain-naseem.vercel.app/",
+        "image": "https://qurratulain-naseem.vercel.app/og-image.jpg",
+        "jobTitle": "Full Stack Developer",
         "email": "dev.quratulain@gmail.com",
         "description": "Full-stack developer in Gujranwala, Pakistan building production-grade multi-tenant SaaS platforms, REST APIs, admin dashboards and payment systems with Laravel and React.",
         "sameAs": [
@@ -110,7 +141,11 @@
         },
         "worksFor": {
           "@type": "Organization",
-          "name": "Bitstorm Solutions"
+          "name": "BitStorm Solutions"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Virtual University of Pakistan"
         },
         "knowsAbout": [
           "PHP",
@@ -136,6 +171,7 @@
             "@type": "EducationalOccupationalCredential",
             "name": "Laravel Certification",
             "credentialCategory": "certificate",
+            "dateEarned": "2024",
             "recognizedBy": {
               "@type": "Organization",
               "name": "Bytewise Community"
@@ -145,42 +181,47 @@
             "@type": "EducationalOccupationalCredential",
             "name": "Meta Backend Developer",
             "credentialCategory": "certificate",
+            "dateEarned": "2024",
             "recognizedBy": {
               "@type": "Organization",
-              "name": "Meta - Coursera"
+              "name": "Meta — Coursera"
             }
           },
           {
             "@type": "EducationalOccupationalCredential",
             "name": "Meta Frontend Developer",
             "credentialCategory": "certificate",
+            "dateEarned": "2024",
             "recognizedBy": {
               "@type": "Organization",
-              "name": "Meta - Coursera"
+              "name": "Meta — Coursera"
             }
           },
           {
             "@type": "EducationalOccupationalCredential",
             "name": "Programming with JavaScript",
             "credentialCategory": "certificate",
+            "dateEarned": "2023",
             "recognizedBy": {
               "@type": "Organization",
-              "name": "Meta - Coursera"
+              "name": "Meta — Coursera"
             }
           },
           {
             "@type": "EducationalOccupationalCredential",
             "name": "React Basics",
             "credentialCategory": "certificate",
+            "dateEarned": "2023",
             "recognizedBy": {
               "@type": "Organization",
-              "name": "Meta - Coursera"
+              "name": "Meta — Coursera"
             }
           },
           {
             "@type": "EducationalOccupationalCredential",
-            "name": "One Million Prompters Initiative - AI Prompt Engineering",
+            "name": "One Million Prompters Initiative",
             "credentialCategory": "certificate",
+            "dateEarned": "2026",
             "recognizedBy": {
               "@type": "Organization",
               "name": "Dubai Crown Prince"
@@ -188,38 +229,6 @@
           }
         ]
       }
-    </script>
-    <script>
-      /* Theme bootstrap — runs before first paint so the correct palette is on
-         <html> already, which is what prevents a flash of the wrong theme.
-         Kept inline, tiny and dependency-free on purpose; it mirrors the
-         resolution order in src/hooks/useTheme.js:
-           1. explicit user choice in localStorage
-           2. OS / browser preference (prefers-color-scheme)
-           3. dark, the default identity
-         Every access is guarded so blocked storage or a missing matchMedia can
-         never break the page. */
-      (function () {
-        var root = document.documentElement;
-        try {
-          var KEY = "portfolio-theme";
-          var stored = null;
-          try {
-            stored = window.localStorage.getItem(KEY);
-          } catch (e) {}
-
-          var theme =
-            stored === "dark" || stored === "light"
-              ? stored
-              : window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? "dark"
-                : "light";
-
-          root.setAttribute("data-theme", theme);
-        } catch (e) {
-          root.setAttribute("data-theme", "dark");
-        }
-      })();
     </script>
   </head>
   <body>

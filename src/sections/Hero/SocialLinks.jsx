@@ -5,19 +5,19 @@ const SocialLinks = () => {
   const socialLinks = [
     {
       id: 1,
-      icon: <FaGithub />,
+      icon: <FaGithub size={16} />,
       href: "https://github.com/qurratulain-dev",
       label: "GitHub",
     },
     {
       id: 2,
-      icon: <FaLinkedin />,
+      icon: <FaLinkedin size={16} />,
       href: "http://www.linkedin.com/in/qurratulain-reactdeveloper",
       label: "LinkedIn",
     },
     {
       id: 3,
-      icon: <FaWhatsapp />,
+      icon: <FaWhatsapp size={16} />,
       href: "https://wa.me/923157753260",
       label: "WhatsApp",
     },
@@ -28,7 +28,7 @@ const SocialLinks = () => {
      library internal into the accessibility tree and changes if react-icons is
      ever upgraded. */
   return (
-    <ul className="flex items-center gap-3">
+    <ul className="flex items-center gap-2.5">
       {socialLinks.map(({ id, icon, href, label }) => (
         <li key={id}>
           <a
@@ -36,7 +36,7 @@ const SocialLinks = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={label}
-            className="btn-icon ghost-btn animate-item"
+            className="ghost-btn social-icon-btn hero-social-btn animate-item"
           >
             <span className="ghost-sweep" />
             <span className="relative z-10" aria-hidden="true">{icon}</span>

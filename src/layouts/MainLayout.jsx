@@ -3,7 +3,7 @@ import Navbar from './Navbar/Navbar'
 import Footer from './Footer/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 
-const MainLayout = ({ children, isDarkMode, onToggleTheme }) => {
+const MainLayout = ({ children }) => {
   return (
     <>
       {/* First tab stop on the page. Off-screen until focused, then it drops in
@@ -12,7 +12,7 @@ const MainLayout = ({ children, isDarkMode, onToggleTheme }) => {
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
-      <Navbar isDarkMode={isDarkMode} onToggleTheme={onToggleTheme} />
+      <Navbar />
       {/* tabIndex -1 keeps <main> out of the tab order while still letting the
           skip link hand it focus, which is what moves the screen reader cursor
           and the visible focus ring to the real content. It is excluded from the

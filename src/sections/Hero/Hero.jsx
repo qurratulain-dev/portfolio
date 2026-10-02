@@ -2,13 +2,6 @@ import React from "react";
 import SocialLinks from "./SocialLinks";
 import HeroActions from "./HeroActions";
 
-const stats = [
-  { value: "6+", label: "Months Exp." },
-  { value: "15+", label: "Projects" },
-  { value: "10k+", label: "Daily Users" },
-  { value: "3.65", label: "CGPA" },
-];
-
 const Hero = () => {
   return (
     <section id="home" className="relative scroll-mt-20 overflow-hidden">

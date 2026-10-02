@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ---------------------------------------------------------------------------
    DESIGN TOKENS
@@ -9,15 +8,13 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --radius-md: 0.375rem; /* 6px  — chips, badges, small controls */
-  --radius-lg: 0.625rem; /* 10px — buttons, inputs */
-  --radius-xl: 0.875rem; /* 14px — cards */
-  --radius-2xl: 1.125rem; /* 18px — overlays, menus */
+  --radius-md: 0.375rem; /* 6px  ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â chips, badges, small controls */
+  --radius-lg: 0.625rem; /* 10px ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â buttons, inputs */
+  --radius-xl: 0.875rem; /* 14px ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â cards */
+  --radius-2xl: 1.125rem; /* 18px ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â overlays, menus */
 }
 
-/* Color utilities resolve through runtime theme variables so every Tailwind
-   color utility (text-accent, bg-accent/10, border-success/25, bg-primary …)
-   automatically adapts to the active theme. */
+/* Tailwind color utilities use the shared dark palette tokens. */
 @theme inline {
   --color-page: var(--ui-page);
   --color-primary: var(--ui-page);
@@ -39,10 +36,9 @@
    RUNTIME THEME VARIABLES (single source of truth)
 --------------------------------------------------------------------------- */
 
-:root,
-[data-theme="dark"] {
+:root {
   /* Native widgets, form controls, scrollbars and the UA canvas follow the
-     active theme. Paired with <meta name="color-scheme" content="dark light">. */
+     site's dark color scheme. */
   color-scheme: dark;
 
   /* Surfaces */
@@ -67,6 +63,9 @@
   --ui-accent: #3B82F6;
   --ui-accent-hover: #2563EB;
   --ui-on-accent: #FFFFFF;
+  /* Filled controls use a darker shade so white labels meet WCAG AA. */
+  --ui-action-bg: #2563EB;
+  --ui-action-hover: #1D4ED8;
   --ui-success: #22C55E;
   --ui-nav-active: var(--ui-accent);
 
@@ -119,81 +118,6 @@
   --r: var(--radius-xl);
 }
 
-[data-theme="light"] {
-  color-scheme: light;
-
-  /* Surfaces */
-  --ui-page: #F4F7FB;
-  --ui-section: #FFFFFF;
-  --ui-section-alt: #EDF3F7;
-  --ui-surface: #FFFFFF;
-  --ui-surface-strong: #FFFFFF;
-
-  /* Text — contrast measured against the three light surfaces above
-     (page 4.99:1, surface 5.36:1, section-alt 4.79:1 for faint). The order
-     text > secondary > muted > faint is what keeps the hierarchy readable. */
-  --ui-text: #17212B;
-  --ui-text-secondary: #46525F;
-  --ui-text-muted: #52606F;
-  --ui-text-faint: #5F6C7B;
-
-  /* Lines */
-  --ui-border: rgba(15, 23, 42, 0.1);
-  --ui-border-strong: rgba(15, 23, 42, 0.18);
-  --ui-hairline: rgba(15, 23, 42, 0.08);
-
-  /* Brand — one step further down the same blue ramp than before, because
-     accent text is also used on its own 10% tint (.chip tags in Experience):
-       #3B82F6 -> 3.42:1 on page, 2.94:1 on a chip fill  (fails AA)
-       #2563EB -> 4.81:1 on page, 4.06:1 on a chip fill  (chips still fail)
-       #1D4ED8 -> 6.24:1 on page, 5.17:1 on a chip fill  (passes everywhere)
-     Hover steps one place further down the ramp, mirroring dark's 500 -> 600.
-     White on the button background is now 6.7:1, up from 3.68:1. */
-  --ui-accent: #1D4ED8;
-  --ui-accent-hover: #1E40AF;
-  --ui-on-accent: #FFFFFF;
-  --ui-success: #166534; /* 6.64:1 on page, 5.71:1 on its own 10% fill, up from 3.07 / 2.77 */
-  --ui-nav-active: var(--ui-accent-hover);
-
-  /* Elevation */
-  --ui-shadow: 0 12px 32px rgba(15, 23, 42, 0.1);
-  --ui-shadow-pop: 0 24px 48px -16px rgba(15, 23, 42, 0.18);
-
-  /* Layout (motion stays the same) */
-  --color-page-bg: var(--ui-page);
-  --color-section-primary: var(--ui-section);
-  --color-section-secondary: var(--ui-section-alt);
-  --color-card-bg: var(--ui-surface);
-  --color-card-border: rgba(37, 99, 235, 0.22);
-  --color-text-primary: var(--ui-text);
-  --color-text-secondary: var(--ui-text-secondary);
-  --color-primary-accent: var(--ui-accent);
-  --color-secondary-accent: var(--ui-accent-hover);
-  --color-navbar-bg: var(--ui-section-alt);
-  --color-navbar-bg-soft: rgba(237, 243, 247, 0.85);
-  --color-menu-bg: var(--ui-surface);
-  --color-accent: var(--ui-accent);
-  --color-text: var(--ui-text);
-  --color-muted: var(--ui-text-muted);
-  --color-faint: var(--ui-text-faint);
-  --color-success: var(--ui-success);
-
-  --bg: var(--ui-page);
-  --bg1: var(--ui-page);
-  --bg2: var(--ui-page);
-  --bg3: var(--ui-page);
-  --blue: var(--ui-accent);
-  --blue-dim: color-mix(in srgb, var(--ui-accent) 12%, transparent);
-  --white: var(--ui-text);
-  --grey: var(--ui-text-muted);
-  --grey2: var(--ui-border-strong);
-  --line: var(--ui-border);
-  --fS: 'Inter', sans-serif;
-  --fM: 'JetBrains Mono', monospace;
-
-  --r: var(--radius-xl);
-}
-
 /* ---------------------------------------------------------------------------
    BASE
 --------------------------------------------------------------------------- */
@@ -215,7 +139,6 @@ body {
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  transition: background-color var(--dur), color var(--dur);
 }
 
 #root {
@@ -264,7 +187,6 @@ button {
   min-height: 100vh;
   background-color: var(--color-page-bg);
   color: var(--ui-text);
-  transition: background-color var(--dur), color var(--dur);
 }
 
 .section-surface-primary {
@@ -275,33 +197,6 @@ button {
 .section-surface-secondary {
   background-color: var(--color-section-secondary);
   transition: background-color var(--dur);
-}
-
-/* ---------------------------------------------------------------------------
-   THEME CROSSFADE
-   Every surface here is painted from the shared tokens, so a theme switch only
-   needs these properties to animate. Previously body faded while sections,
-   cards and panels snapped, which read as a half-finished repaint. The
-   durations are the existing --dur token and the reduced-motion block at the
-   end of this file collapses them, so the shift stays subtle and never
-   distracts from the toggle itself.
---------------------------------------------------------------------------- */
-
-.card,
-.project-panel,
-.site-footer,
-.mobile-panel,
-#home,
-#about,
-#skills,
-#experience,
-#projects,
-#contact,
-footer {
-  transition:
-    background-color var(--dur),
-    border-color var(--dur),
-    color var(--dur);
 }
 
 /* ---------------------------------------------------------------------------
@@ -348,10 +243,12 @@ footer {
   left: 50%;
   z-index: 10000;
   transform: translate(-50%, -150%);
-  padding: 0.6rem 1.1rem;
+  /* 0.7rem block padding lands the focused skip link at ~45px, clearing the
+     44px target as well as being comfortably visible when it drops down. */
+  padding: 0.7rem 1.1rem;
   border-radius: 0 0 var(--radius-md) var(--radius-md);
-  background: var(--ui-accent);
-  color: var(--ui-on-accent);
+  background: var(--ui-text);
+  color: var(--ui-page);
   font-family: var(--font-sans);
   font-size: 0.875rem;
   font-weight: 600;
@@ -363,18 +260,9 @@ footer {
 
 .skip-link:focus-visible {
   transform: translate(-50%, 0);
-  /* Drawn on the inside, and in the page colour, so it reads against the
-     button fill in either theme rather than blending into the page behind. */
+  /* Drawn on the inside in the page colour for clear contrast. */
   outline: 2px solid var(--ui-page);
   outline-offset: -4px;
-}
-
-/* In dark, --ui-on-accent on --ui-accent is the same 3.68:1 pairing the dark
-   primary button already has. Inverting onto the text/page pair keeps this
-   new control at ~18:1 instead of adding one more sub-AA surface. */
-[data-theme="dark"] .skip-link {
-  background: var(--ui-text);
-  color: var(--ui-page);
 }
 
 /* ---------------------------------------------------------------------------
@@ -448,7 +336,7 @@ footer {
   padding: 1.25rem;
 }
 
-/* Hover is elevation only — the card lifts and gains a shadow, but nothing
+/* Hover is elevation only ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â the card lifts and gains a shadow, but nothing
    changes colour. A tinted border plus recoloured text/icons on hover read as
    a link, which made these cards compete with the section's own heading and
    the single accent used for real emphasis. */
@@ -471,7 +359,7 @@ footer {
    be affected). There is no project imagery to present yet, so the section's
    visual weight comes from one full-width panel rather than a grid of small
    placeholder cards: a 1px accent cap, a faint token-driven grid, and
-   generously padded rows split by hairlines — the same row idiom Skills and
+   generously padded rows split by hairlines ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â the same row idiom Skills and
    Certifications already use, at a larger scale.
 --------------------------------------------------------------------------- */
 
@@ -512,9 +400,7 @@ footer {
   );
 }
 
-/* Faint technical grid drawn from --ui-hairline, so it stays visible in the
-   light theme without inverting the dark one, and masked so it fades out
-   before the last row instead of reading as graph paper. */
+/* Faint technical grid drawn from --ui-hairline and masked so it fades out\r\n   before the last row instead of reading as graph paper. */
 .project-panel::after {
   content: "";
   position: absolute;
@@ -610,14 +496,14 @@ footer {
 }
 
 .btn-primary {
-  background-color: var(--ui-accent);
+  background-color: var(--ui-action-bg);
   color: var(--ui-on-accent);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary:hover {
-  background-color: var(--ui-accent-hover);
-  border-color: var(--ui-accent-hover);
+  background-color: var(--ui-action-hover);
+  border-color: var(--ui-action-hover);
 }
 
 .btn-outline {
@@ -629,8 +515,7 @@ footer {
 
 /* Hover is a neutral shade, never accent. Tinting the border and text blue
    turned a restrained outline button into a loud link, and fought the hero
-   heading for attention. Mixing against --ui-text keeps the effect in step with
-   the theme: a faint white wash in dark mode, an equally faint grey in light. */
+   heading for attention. Mixing against --ui-text keeps it subtle. */
 .btn-outline:hover {
   background-color: color-mix(in srgb, var(--ui-text) 7%, transparent);
   border-color: var(--ui-border-strong);
@@ -648,9 +533,14 @@ footer {
 }
 
 .btn-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  min-height: 2.5rem;
+  /* 2.75rem = 44px, the minimum comfortable touch target. This is the shared
+     geometry for the mobile menu button, the hero social
+     links and the scroll-to-top button, so all four clear 44px at once. The
+     navbar bar is 4rem (64px) tall, so two of these plus the gap still fit
+     with room to spare, and the wider icon box keeps the same 1.15rem glyph. */
+  width: 2.75rem;
+  height: 2.75rem;
+  min-height: 2.75rem;
   padding: 0;
   border-radius: var(--radius-lg);
   display: inline-flex;
@@ -659,7 +549,16 @@ footer {
   font-size: 1.15rem;
 }
 
-/* Ghost sweep (subtle light sheen on bordered icon/outline controls) */
+.social-icon-btn {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+}
+
+/* Ghost sweep (subtle sheen on bordered icon/outline controls) */
 .ghost-btn {
   position: relative;
   overflow: hidden;
@@ -740,6 +639,23 @@ footer {
   color: var(--ui-accent);
 }
 
+/* The wordmark renders as an 18-20px line, well under a usable touch target.
+   The hit area is grown with an absolutely positioned ::after instead of
+   padding or min-height: an out-of-flow overlay extends the tappable region
+   past the glyph without adding a single pixel of height, so the navbar bar
+   and the footer's vertical rhythm are both untouched. Both places that reuse
+   .nav-brand (the navbar and the footer) therefore get a ~44px target for
+   free, and the wordmark itself stays exactly where it was. */
+.nav-brand {
+  position: relative;
+}
+
+.nav-brand::after {
+  content: "";
+  position: absolute;
+  inset: -0.8125rem 0;
+}
+
 /* Desktop nav links ----------------------------------------------------- */
 
 .nav-link {
@@ -787,6 +703,12 @@ footer {
 /* Mobile menu ------------------------------------------------------------ */
 
 .mobile-panel {
+  /* Closed is the default state, so it is declared rather than animated in.
+     Without this the panel painted at full opacity on first render and GSAP
+     then tweened it away, which flashed the whole menu for 250ms on every
+     page load. GSAP still owns the open/close transition and takes it from
+     this value; only the unrequested starting state is now free. */
+  opacity: 0;
   background-color: var(--color-menu-bg);
   border: 1px solid color-mix(in srgb, var(--ui-accent) 25%, transparent);
   border-radius: var(--radius-2xl);
@@ -803,7 +725,9 @@ footer {
 .menu-link {
   display: block;
   width: 100%;
-  padding: 0.625rem 0.875rem;
+  /* 0.75rem block padding makes each row ~48px tall, a proper touch target,
+     where 0.625rem left it at 43.3px. */
+  padding: 0.75rem 0.875rem;
   border-radius: var(--radius-md);
   font-size: 1rem;
   font-weight: 500;
@@ -835,14 +759,10 @@ footer {
   background-color: var(--ui-section);
 }
 
-/* The footer's socials reuse .ghost-btn for their geometry, sheen, radius and
-   size, so only the colour needs overriding. The shared hover tints the border
-   and icon accent, which flashes blue right beside the copyright line and
-   pulls the eye off the closing statement. Here the border steps up to
-   --ui-border-strong instead and the icon stays --ui-text. Scoped under
-   .site-footer on purpose: .ghost-btn is also the Navbar theme toggle, the
-   mobile menu toggle and the hero socials, and those keep their accent hover. */
-.site-footer .ghost-btn:hover {
+/* Footer and Hero social controls share the quiet neutral hover. Other ghost
+   buttons (including the navbar controls) keep their accent hover. */
+.site-footer .ghost-btn:hover,
+.hero-social-btn:hover {
   border-color: var(--ui-border-strong);
   color: var(--ui-text);
 }
@@ -850,7 +770,8 @@ footer {
 /* The shared sheen has a blue-white cast in it (rgba(200, 230, 255, 0.22)) that
    still registers as colour once the border and icon are neutral, so the
    footer's copy drops to plain white. The sweep animation itself is untouched. */
-.site-footer .ghost-btn .ghost-sweep {
+.site-footer .ghost-btn .ghost-sweep,
+.hero-social-btn .ghost-sweep {
   background: linear-gradient(
     90deg,
     transparent,
