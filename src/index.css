@@ -722,6 +722,15 @@ button {
   background-color: color-mix(in srgb, var(--ui-page) 55%, transparent);
 }
 
+/* Tailwind's responsive display utilities are layered; .btn-icon's unlayered
+   inline-flex otherwise wins over xl:hidden. Match Tailwind's xl breakpoint. */
+@media (min-width: 80rem) {
+  .mobile-menu-toggle,
+  .mobile-backdrop {
+    display: none;
+  }
+}
+
 .menu-link {
   display: block;
   width: 100%;

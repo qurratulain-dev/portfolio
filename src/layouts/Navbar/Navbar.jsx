@@ -185,7 +185,7 @@ const Navbar = () => {
                             aria-label={isMenu ? "Close navigation menu" : "Open navigation menu"}
                             aria-expanded={isMenu}
                             aria-controls="mobile-menu"
-                            className="btn-icon ghost-btn xl:hidden animate-item"
+                            className="btn-icon ghost-btn mobile-menu-toggle xl:hidden animate-item"
                         >
                             <span className="ghost-sweep" />
                             <span className="relative z-10" aria-hidden="true">{isMenu ? <TbMenu3 /> : <TbMenu2 />}</span>
