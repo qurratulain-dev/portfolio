@@ -11,7 +11,7 @@ const SocialLinks = () => {
     {
       id: 2,
       icon: <FaLinkedin size={16} />,
-      href: "https://www.linkedin.com/in/qurratulain-reactdeveloper",
+      href: "https://www.linkedin.com/in/qurratulain-dev/",
       label: "LinkedIn",
     },
     {
