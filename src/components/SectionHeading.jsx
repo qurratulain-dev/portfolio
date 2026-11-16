@@ -1,9 +1,7 @@
-import React from "react";
 
-const SectionHeading = ({ eyebrow, title, subtitle }) => {
+const SectionHeading = ({ title, subtitle }) => {
   return (
     <div className="section-header">
-      {eyebrow && <span className="section-eyebrow">{eyebrow}</span>}
       <h2 className="section-title">{title}</h2>
       {subtitle && <p className="section-subtitle">{subtitle}</p>}
     </div>

@@ -1,4 +1,3 @@
-import React from "react";
 
 /* Icon swap: the icon sits after the label by default and slides to the front
    on hover / keyboard focus. It is rendered twice (both decorative) and the
