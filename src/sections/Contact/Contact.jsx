@@ -16,7 +16,7 @@ const contacts = [
     title: "LinkedIn",
     description: "Let's connect professionally",
     value: "Qurratulain",
-    href: "https://www.linkedin.com/in/qurratulain-reactdeveloper",
+    href: "https://www.linkedin.com/in/qurratulain-dev/",
   },
   {
     icon: <FaWhatsapp className="w-5 h-5" />,
