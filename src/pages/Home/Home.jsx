@@ -1,4 +1,3 @@
-import React from 'react'
 import Hero from '../../sections/Hero/Hero'
 import Ticker from '../../sections/Ticker/Ticker'
 import About from '../../sections/About/About'
