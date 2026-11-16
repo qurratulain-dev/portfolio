@@ -1,4 +1,3 @@
-import React from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 import SectionHeading from "../../components/SectionHeading";
 
@@ -45,12 +44,12 @@ const Certifications = () => {
                 {cert.title}
               </h3>
               <p className="mt-2 text-sm text-muted">{cert.issuer}</p>
-              <p className="mt-1.5 font-mono text-xs leading-6 text-faint">{cert.date}</p>
+              <p className="cert-card-date">{cert.date}</p>
               <a
                 href={cert.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-outline mt-5 w-fit"
+                className="btn btn-outline cert-card-link mt-5 w-fit"
                 style={{ paddingInline: "1rem", fontSize: "0.875rem", minHeight: "2.75rem" }}
                 aria-label={`View certificate for ${cert.title} (opens in a new tab)`}
               >
