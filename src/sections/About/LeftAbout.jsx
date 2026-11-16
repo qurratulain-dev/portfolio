@@ -1,13 +1,11 @@
-import React from "react";
 
 const LeftAbout = () => {
   return (
     <div className="about-photo-wrap mx-auto w-full max-w-[min(18rem,74vw)] sm:max-w-[21rem] lg:sticky lg:top-20 lg:mx-0 lg:max-w-none">
-      {/* Match the face framing used by apple-touch-icon, directly from the
-          1024px portrait source so the small touch icon is never upscaled. */}
+      {/* Face crop from the 1024px portrait source (not an upscaled thumbnail). */}
       <div className="about-photo relative aspect-[4/5] w-full overflow-hidden rounded-xl border border-border-strong bg-surface shadow-[var(--ui-shadow)]">
         {/* Full-resolution WebP; the wider portrait frame reveals more of the
-            source vertically while keeping the face aligned with the icon. */}
+            source vertically while keeping the face in view. */}
         <img
           src="/profile-1024.webp"
           width={1024}

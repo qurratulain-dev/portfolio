@@ -1,4 +1,3 @@
-import React from "react";
 
 const stats = [
   { value: "1+", label: "Year Experience" },

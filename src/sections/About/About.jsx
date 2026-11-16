@@ -1,4 +1,3 @@
-import React from "react";
 import LeftAbout from "./LeftAbout";
 import RightAbout from "./RightAbout";
 import SectionHeading from "../../components/SectionHeading";
