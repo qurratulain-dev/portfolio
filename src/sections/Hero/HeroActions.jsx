@@ -1,4 +1,3 @@
-import React from "react";
 import { FiDownload, FiMail } from "react-icons/fi";
 import { FiArrowRight } from "react-icons/fi";
 import AnimatedLinkButton from "../../components/AnimatedLinkButton";

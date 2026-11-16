@@ -1,4 +1,3 @@
-import React from "react";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 const SocialLinks = () => {
@@ -12,7 +11,7 @@ const SocialLinks = () => {
     {
       id: 2,
       icon: <FaLinkedin size={16} />,
-      href: "http://www.linkedin.com/in/qurratulain-reactdeveloper",
+      href: "https://www.linkedin.com/in/qurratulain-reactdeveloper",
       label: "LinkedIn",
     },
     {
