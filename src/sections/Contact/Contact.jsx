@@ -1,4 +1,3 @@
-import React from "react";
 import { HiOutlineMail } from "react-icons/hi";
 import { FiLinkedin } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa6";
@@ -17,7 +16,7 @@ const contacts = [
     title: "LinkedIn",
     description: "Let's connect professionally",
     value: "Qurratulain",
-    href: "http://www.linkedin.com/in/qurratulain-reactdeveloper",
+    href: "https://www.linkedin.com/in/qurratulain-reactdeveloper",
   },
   {
     icon: <FaWhatsapp className="w-5 h-5" />,
