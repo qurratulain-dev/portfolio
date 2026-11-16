@@ -1,4 +1,3 @@
-import React from "react";
 import { FiArrowUpRight, FiGithub, FiServer } from "react-icons/fi";
 import SectionHeading from "../../components/SectionHeading";
 
