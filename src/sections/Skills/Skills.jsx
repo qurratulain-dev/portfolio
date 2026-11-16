@@ -1,4 +1,3 @@
-import React from "react";
 import { FiMonitor, FiServer, FiCpu, FiDatabase, FiLayout, FiTool } from "react-icons/fi";
 import SectionHeading from "../../components/SectionHeading";
 
