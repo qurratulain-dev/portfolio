@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 
 const experiences = [
